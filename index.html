@@ -1119,6 +1119,53 @@
       cursor: pointer;
       font-weight: bold;
     }
+
+    /* Video Modal Styles */
+    #promoModal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.9);
+        z-index: 2000;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    #promoModalContent {
+        background: #000;
+        border: 2px solid var(--christmas-gold);
+        border-radius: 10px;
+        width: 90%;
+        max-width: 800px;
+        height: auto;
+        position: relative;
+        padding: 0;
+        overflow: hidden;
+    }
+    
+    #promoModalContent iframe {
+        width: 100%;
+        aspect-ratio: 16/9;
+        border: none;
+        display: block;
+    }
+
+    .close-promo {
+        position: absolute;
+        top: -15px;
+        right: -15px;
+        background: var(--christmas-red);
+        color: white;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border: 2px solid white;
+        z-index: 2001;
+    }
   </style>
 </head>
 <body>
@@ -1602,14 +1649,30 @@
   </div>
 
   <!-- BOTÓN FLOTANTE PROMO NAVIDAD (Campana) -->
-  <a href="https://lh3.googleusercontent.com/pw/AP1GczNq8f14TjpBBFflLMTftePpoeSvhY_zxb3gQPuB0KwlPgEHRfBLdIvp348vy3VyuoP0m6Wyc3ouZ2c34jX_U1EH3PfprUEVeugKEE1kxiHeK1TWyRrVIKUfFPs5eAELcaP1V5gfjRudqKCwUYSmVf_FY7Dw3QNjF7fMNVzE_mrYHGi-5nnlPzBBAXsD-kUwl6AENBgGYkoBtc8ctHteocq0ioMYE6TuSkau4gqnz2bpVvV9ixCDWleqQzlRrc3O1RsrfoVgya508bMDcaLTKRGLZPfmlUITD6qjDK8fDnn-EpczppmxKTdgewjq74lKBnVKeyMEcEOnv8agWNgvAkcbaY3rZYqpjVET3ZY-x6S7N6SYF9FlW1TfcNoR87x0eTr_9YK1zmKqG5bycUB_G7ONpTg4P9BFG-NGlAsaNPL-6j15nhpkxx9evrwYG_abfJbEqOL9sWau5juYpzfwdEnhQZoTDpBm0Vyk4HWUlOZz2-7ZH6EROnVlMfM5skaC1OEjRaKZGCglO-I3FJ5KoTixWKbK3Z5yQrtz0DtvimLZZyomXXrrwipx6TgHlBGN0aj8rbZN87KpVcIVrIHaWyjEm3rd9pHWeoCCB_Hg0KVFeofVIFK0fu2u9OVlJrqN9F_uX2A7FnJjsqrbX9fuYLL1_HyhW96j1JWL_3qMW-yzWvuYb4Yiy2C0NSWQALILvuACvo9kCWG3aP_uu9zpmtq2f5GsdRIHNOL4-7pqbdrDUhZbLQYxaMRKgMvxjMMWiNMpUqzWutOvqDi8UjBUrKrBcCeCiWP8_AYeQEr2WxpHxKQl3rEsB35wE5FZQxF-kCHQRUL0Nf2uLdmiAlKIo-C0XsIK7r7tcHJODD4GXzXX-T9-0a1aBspHkWK3kTEiSDJ_NI-6gIxyr_UJ12F5S5C3OT1ESieMbM-rCyERPk9RIO88XkHLKHGAO-LlbEWetPv6aFL4x14=m15?authuser=0&cpn=ZRW_5dNWIs2aLLD0&c=WEB_EMBEDDED_PLAYER&cver=1.20251202.20.00" 
+  <button id="promo-btn"
      class="promo-fab" 
-     id="promo-btn"
-     target="_blank" 
+     onclick="openPromoModal()"
      title="Ver Promoción Navideña">
       <i class="fas fa-bell"></i>
       <span>PROMO</span>
-  </a>
+  </button>
+
+  <!-- MODAL PARA VIDEO PROMO -->
+  <div id="promoModal">
+      <div id="promoModalContent">
+          <button class="close-promo" onclick="closePromoModal()">&times;</button>
+          <!-- Iframe embebido para el player -->
+          <iframe 
+            src="https://lh3.googleusercontent.com/pw/AP1GczNq8f14TjpBBFflLMTftePpoeSvhY_zxb3gQPuB0KwlPgEHRfBLdIvp348vy3VyuoP0m6Wyc3ouZ2c34jX_U1EH3PfprUEVeugKEE1kxiHeK1TWyRrVIKUfFPs5eAELcaP1V5gfjRudqKCwUYSmVf_FY7Dw3QNjF7fMNVzE_mrYHGi-5nnlPzBBAXsD-kUwl6AENBgGYkoBtc8ctHteocq0ioMYE6TuSkau4gqnz2bpVvV9ixCDWleqQzlRrc3O1RsrfoVgya508bMDcaLTKRGLZPfmlUITD6qjDK8fDnn-EpczppmxKTdgewjq74lKBnVKeyMEcEOnv8agWNgvAkcbaY3rZYqpjVET3ZY-x6S7N6SYF9FlW1TfcNoR87x0eTr_9YK1zmKqG5bycUB_G7ONpTg4P9BFG-NGlAsaNPL-6j15nhpkxx9evrwYG_abfJbEqOL9sWau5juYpzfwdEnhQZoTDpBm0Vyk4HWUlOZz2-7ZH6EROnVlMfM5skaC1OEjRaKZGCglO-I3FJ5KoTixWKbK3Z5yQrtz0DtvimLZZyomXXrrwipx6TgHlBGN0aj8rbZN87KpVcIVrIHaWyjEm3rd9pHWeoCCB_Hg0KVFeofVIFK0fu2u9OVlJrqN9F_uX2A7FnJjsqrbX9fuYLL1_HyhW96j1JWL_3qMW-yzWvuYb4Yiy2C0NSWQALILvuACvo9kCWG3aP_uu9zpmtq2f5GsdRIHNOL4-7pqbdrDUhZbLQYxaMRKgMvxjMMWiNMpUqzWutOvqDi8UjBUrKrBcCeCiWP8_AYeQEr2WxpHxKQl3rEsB35wE5FZQxF-kCHQRUL0Nf2uLdmiAlKIo-C0XsIK7r7tcHJODD4GXzXX-T9-0a1aBspHkWK3kTEiSDJ_NI-6gIxyr_UJ12F5S5C3OT1ESieMbM-rCyERPk9RIO88XkHLKHGAO-LlbEWetPv6aFL4x14=m15?authuser=0&cpn=ZRW_5dNWIs2aLLD0&c=WEB_EMBEDDED_PLAYER&cver=1.20251202.20.00" 
+            allow="autoplay; encrypted-media" 
+            allowfullscreen>
+          </iframe>
+          <div style="text-align: center; padding: 10px; color: white;">
+              <p>¿No carga el video?</p>
+              <a href="https://lh3.googleusercontent.com/pw/AP1GczNq8f14TjpBBFflLMTftePpoeSvhY_zxb3gQPuB0KwlPgEHRfBLdIvp348vy3VyuoP0m6Wyc3ouZ2c34jX_U1EH3PfprUEVeugKEE1kxiHeK1TWyRrVIKUfFPs5eAELcaP1V5gfjRudqKCwUYSmVf_FY7Dw3QNjF7fMNVzE_mrYHGi-5nnlPzBBAXsD-kUwl6AENBgGYkoBtc8ctHteocq0ioMYE6TuSkau4gqnz2bpVvV9ixCDWleqQzlRrc3O1RsrfoVgya508bMDcaLTKRGLZPfmlUITD6qjDK8fDnn-EpczppmxKTdgewjq74lKBnVKeyMEcEOnv8agWNgvAkcbaY3rZYqpjVET3ZY-x6S7N6SYF9FlW1TfcNoR87x0eTr_9YK1zmKqG5bycUB_G7ONpTg4P9BFG-NGlAsaNPL-6j15nhpkxx9evrwYG_abfJbEqOL9sWau5juYpzfwdEnhQZoTDpBm0Vyk4HWUlOZz2-7ZH6EROnVlMfM5skaC1OEjRaKZGCglO-I3FJ5KoTixWKbK3Z5yQrtz0DtvimLZZyomXXrrwipx6TgHlBGN0aj8rbZN87KpVcIVrIHaWyjEm3rd9pHWeoCCB_Hg0KVFeofVIFK0fu2u9OVlJrqN9F_uX2A7FnJjsqrbX9fuYLL1_HyhW96j1JWL_3qMW-yzWvuYb4Yiy2C0NSWQALILvuACvo9kCWG3aP_uu9zpmtq2f5GsdRIHNOL4-7pqbdrDUhZbLQYxaMRKgMvxjMMWiNMpUqzWutOvqDi8UjBUrKrBcCeCiWP8_AYeQEr2WxpHxKQl3rEsB35wE5FZQxF-kCHQRUL0Nf2uLdmiAlKIo-C0XsIK7r7tcHJODD4GXzXX-T9-0a1aBspHkWK3kTEiSDJ_NI-6gIxyr_UJ12F5S5C3OT1ESieMbM-rCyERPk9RIO88XkHLKHGAO-LlbEWetPv6aFL4x14=m15?authuser=0&cpn=ZRW_5dNWIs2aLLD0&c=WEB_EMBEDDED_PLAYER&cver=1.20251202.20.00" target="_blank" class="btn">Ver Original</a>
+          </div>
+      </div>
+  </div>
 
   <!-- WIDGET DE CHAT IA MODIFICADO -->
   <button class="ai-fab" id="aiToggle" title="Asistente Virtual Estefanía">
@@ -2141,6 +2204,32 @@
         
         document.body.prepend(lightsContainer);
     })();
+  </script>
+
+  <!-- Script del Modal de Video Promo -->
+  <script>
+      function openPromoModal() {
+          const modal = document.getElementById('promoModal');
+          modal.style.display = 'flex';
+      }
+
+      function closePromoModal() {
+          const modal = document.getElementById('promoModal');
+          modal.style.display = 'none';
+          // Opcional: Detener video al cerrar si fuera un iframe de YT
+          const iframe = modal.querySelector('iframe');
+          if (iframe) {
+              const src = iframe.src;
+              iframe.src = src; // Reload to stop
+          }
+      }
+
+      // Cerrar al hacer clic fuera del contenido
+      document.getElementById('promoModal').addEventListener('click', function(e) {
+          if (e.target === this) {
+              closePromoModal();
+          }
+      });
   </script>
 </body>
 </html>
