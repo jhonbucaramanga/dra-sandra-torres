@@ -1,0 +1,2146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- TÍTULO Y META TAGS DE REDES SOCIALES (OPEN GRAPH) -->
+  <title>Dra. Sandra Milena Torres G. | Odontología</title>
+  
+  <!-- Configuración para que salga el logo al compartir en WhatsApp/Facebook -->
+  <meta property="og:title" content="Dra. Sandra Milena Torres G. | Odontología Integral" />
+  <meta property="og:description" content="Odontología integral y neurofocal con atención humana y personalizada. ¡Agenda tu cita y transforma tu sonrisa!" />
+  <meta property="og:image" content="https://lh3.googleusercontent.com/pw/AP1GczNcDv_oOB-y3AfnEKBh-Vj6XACWq5IAkWKosXu305yGKbsHIeQiChqAu6VvJLt4elWGvS3vfUGr3uSmv9D_XUc2vWS-i7qxRnZv1tnSlT4FzH5SYyNCmMtb0dxJBr9AuRZ-gjmFJz8mqkLeEESfhDe3=w1270-h615-s-no-gm?authuser=0" />
+  <meta property="og:image:width" content="1270" />
+  <meta property="og:image:height" content="615" />
+  <meta property="og:url" content="https://dra-sandra-torres.netlify.app/" />
+  <meta property="og:type" content="website" />
+
+  <!-- Configuración para Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Dra. Sandra Milena Torres G." />
+  <meta name="twitter:description" content="Odontología integral y neurofocal." />
+  <meta name="twitter:image" content="https://lh3.googleusercontent.com/pw/AP1GczNcDv_oOB-y3AfnEKBh-Vj6XACWq5IAkWKosXu305yGKbsHIeQiChqAu6VvJLt4elWGvS3vfUGr3uSmv9D_XUc2vWS-i7qxRnZv1tnSlT4FzH5SYyNCmMtb0dxJBr9AuRZ-gjmFJz8mqkLeEESfhDe3=w1270-h615-s-no-gm?authuser=0" />
+
+  <!-- Favicon (Icono de la pestaña del navegador) -->
+  <link rel="icon" type="image/jpeg" href="https://lh3.googleusercontent.com/pw/AP1GczNcDv_oOB-y3AfnEKBh-Vj6XACWq5IAkWKosXu305yGKbsHIeQiChqAu6VvJLt4elWGvS3vfUGr3uSmv9D_XUc2vWS-i7qxRnZv1tnSlT4FzH5SYyNCmMtb0dxJBr9AuRZ-gjmFJz8mqkLeEESfhDe3=w1270-h615-s-no-gm?authuser=0" />
+
+  <!-- Fuente Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <!-- FontAwesome para el cursor de muela y posibles iconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Chart.js para el Dashboard -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <style>
+    :root{
+      --very-dark:#181718;
+      --deep-blue:#17406c;
+      --slate:#627284;
+      --light-blue:#94b3c4;
+      --very-light:#dfe3e6;
+      --ai-accent: #a855f7; /* Color para la IA */
+      --christmas-red: #dc2626; /* Color rojo navideño */
+      --christmas-gold: #FFD700; /* Color dorado para la campana */
+    }
+    *{box-sizing:border-box}
+    
+    html {
+      scroll-behavior: smooth; /* Desplazamiento suave para los enlaces del menú */
+    }
+    
+    body{
+      margin:0;
+      font-family:"Poppins",sans-serif;
+      
+      /* --- CONFIGURACIÓN DE FONDO GLOBAL --- */
+      background-color: var(--very-dark);
+      background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
+        url('https://photos.fife.usercontent.google.com/pw/AP1GczNDxOCLB7jHXwjXCS7zwjjZb6JPM1HIP7rBsi34AoRSIH8kZi-AeB4=w1256-h945-s-no-gm?authuser=0');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-attachment: fixed;
+      background-size: cover;
+      
+      color:#fff;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+      
+      display:flex;
+      flex-direction:column;
+      min-height:100vh;
+      cursor:none; 
+      overflow-x: hidden;
+    }
+
+    /* Mantener feedback visual en elementos interactivos */
+    a, button, .menu-item, .card img, .float-circle, .nav, .ai-fab, .chat-input input, .chat-send-btn, .whatsapp-fab, .case-card, .promo-fab, .close-dashboard { outline: none; }
+
+    header{
+      background:#fff;
+      padding:10px 0;
+      margin:0;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      overflow: hidden;
+      text-shadow: none;
+    }
+    
+    .banner-full{
+      width: 45%;
+      height: auto;
+      object-fit: contain; 
+      display:block;
+      border-radius: 8px;
+      transition: width 0.3s ease;
+    }
+
+    nav{
+      background:var(--deep-blue);
+      border-top:1px solid var(--slate);
+      border-bottom:1px solid var(--slate);
+      display:flex;
+      gap:20px;
+      justify-content:center;
+      align-items:center;
+      padding:12px;
+      flex-wrap: wrap;
+      text-shadow: none;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .menu-item{
+      position:relative;
+      color:#fff;
+      text-decoration:none;
+      font-weight:500;
+      cursor: none;
+      padding: 5px 10px;
+    }
+    
+    .menu-item:hover{color:var(--light-blue)}
+    
+    .submenu{
+      display:none;
+      position:absolute;
+      top:100%;
+      left:0;
+      background:var(--very-dark);
+      border:1px solid var(--slate);
+      border-radius:10px;
+      min-width:260px;
+      box-shadow:0 14px 28px rgba(0,0,0,.45);
+      padding:8px 0;
+      z-index:10;
+    }
+    
+    .submenu a{
+      display:block;
+      padding:10px 14px;
+      color:var(--very-light);
+      text-decoration:none;
+      cursor: none;
+    }
+    
+    .submenu a:hover{background:var(--slate);color:#fff}
+    
+    .menu-item:hover .submenu{display:block}
+    
+    .group-title{padding:8px 14px;color:#fff;font-weight:700;opacity:.95}
+    .group-divider{height:1px;background:var(--slate);margin:6px 0;opacity:.6}
+
+    main{flex:1; padding-bottom: 40px;}
+    
+    /* --- NUEVO ESTILO HERO EMPRESARIAL (INICIO) --- */
+    .hero {
+      position: relative;
+      width: 100%;
+      min-height: 70vh; /* Altura considerable para impacto visual */
+      display: flex;
+      align-items: center; /* Centrar contenido verticalmente */
+      padding: 80px 20px;
+      margin-bottom: 40px;
+      overflow: hidden;
+      
+      /* Imagen de fondo con superposición de degradado oscuro para legibilidad */
+      /* El degradado es más oscuro a la izquierda para resaltar el texto */
+      background-image: 
+        linear-gradient(to right, rgba(24, 23, 24, 0.95) 25%, rgba(24, 23, 24, 0.65) 60%, rgba(24, 23, 24, 0.3) 100%),
+        url('https://lh3.googleusercontent.com/pw/AP1GczP7ygD0YnuVTSu_E0jBROlDWuzlX27AcAVvOK3ofk-zBL5O2eKMd087COBk19lyLuOuY1y-YNMCSxYFlM08Zq7av8MmCwYqB62CSb0lRa9KRu9rqGN9luait8MMp0XzoG4x9cX6TJTeo5q5ycex0EoY=w1024-h837-s-no-gm?authuser=0');
+      background-size: cover;
+      background-position: center top;
+      background-attachment: fixed; /* Efecto parallax elegante */
+      border-bottom: 4px solid var(--deep-blue);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    /* Contenedor del contenido dentro del Hero */
+    .hero-content {
+      max-width: 1100px; /* Ancho máximo para el contenido */
+      margin: 0 auto; /* Centrar horizontalmente el contenedor dentro del hero */
+      width: 100%; /* Ocupar el ancho disponible hasta el max-width */
+      z-index: 2; /* Asegurar que el texto esté sobre el fondo */
+      padding-left: 20px; /* Un poco de espacio a la izquierda en pantallas grandes */
+    }
+    
+    /* Ajustes para móviles */
+    @media (max-width: 900px) {
+      .hero {
+        min-height: 60vh;
+        padding: 60px 20px;
+        align-items: flex-end; /* Texto más abajo en móviles para no tapar la cara si la hay */
+        background-position: center center; /* Mejor centrado en móviles */
+      }
+      .hero-content {
+        padding-left: 0;
+        text-align: center; /* Centrar texto en móviles */
+      }
+      .hero-content p, .features-list {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      /* Ajuste específico para que el banner se vea bien en celular */
+      .banner-full {
+        width: 90%;
+      }
+    }
+
+    /* ESTILO PARA NUEVAS SECCIONES (PROFILAXIS, ETC) */
+    .service-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 60px 20px;
+      display: grid;
+      grid-template-columns: 1fr 400px; /* Por defecto: Texto izq, Imagen der */
+      align-items: center;
+      gap: 60px;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      background: rgba(0,0,0,0.3);
+      border-radius: 20px;
+      margin-top: 40px;
+    }
+
+    /* Modificador para cuando la imagen va a la izquierda */
+    .service-section.img-left {
+      grid-template-columns: 400px 1fr; /* Imagen izq, Texto der */
+    }
+    
+    @media (max-width: 900px) {
+      .service-section, .service-section.img-left {
+        grid-template-columns: 1fr;
+        text-align: center;
+        justify-items: center;
+        gap: 30px;
+      }
+      .service-content {
+          order: 2;
+      }
+      .service-img-container {
+          order: 1;
+          width: 280px;
+          height: auto;
+      }
+    }
+
+    /* Ajustes de texto para el nuevo estilo del Hero */
+    .hero-content h1 {
+      font-size: 3.5rem; /* Título más grande e imponente */
+      font-weight: 700;
+      color: var(--light-blue); /* Color de acento para el título */
+      text-shadow: 3px 3px 6px rgba(0,0,0,0.9);
+      margin-bottom: 25px;
+      line-height: 1.1;
+    }
+
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2.5rem; /* Reducir un poco en móviles */
+      }
+    }
+
+    .service-content h2{
+      color: var(--light-blue);
+      font-weight:700;
+      margin:0 0 20px; 
+      text-shadow: 2px 2px 4px #000;
+      line-height: 1.2;
+      font-size: 2rem;
+    }
+    
+    .hero-content p {
+      color: #fff;
+      font-size: 1.3rem; /* Texto más grande */
+      line-height:1.8;
+      margin:0 0 30px;
+      font-weight: 400;
+      max-width: 750px; /* Limitar ancho del párrafo para lectura cómoda */
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    }
+    
+    .service-content p{
+      color: #fff;
+      font-size: 1.1rem;
+      line-height:1.8;
+      margin:0 0 20px;
+      font-weight: 400;
+      text-align: justify;
+    }
+
+    /* Lista de enfoques */
+    .features-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        text-align: left;
+    }
+
+    .hero-content .features-list li {
+        font-size: 1.25rem;
+        margin-bottom: 15px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    }
+
+    .features-list li {
+        margin-bottom: 12px;
+        font-size: 1.1rem;
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        color: var(--light-blue);
+        text-shadow: 1px 1px 2px rgba(0,0,0,1);
+    }
+    
+    .features-list li i {
+        margin-right: 10px;
+        color: #fff;
+    }
+    
+    /* Imagen de servicios (Profilaxis) */
+    .service-img-container img {
+        width: 100%;
+        max-width: 400px;
+        border-radius: 15px;
+        border: 2px solid var(--light-blue);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+        display: block;
+    }
+
+    .highlight{
+      color:var(--light-blue);
+      font-weight:700;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+    }
+    
+    .horario{
+      margin-top:14px;
+      display:inline-block;
+      background:rgba(0, 0, 0, 0.6);
+      border:1px solid var(--slate);
+      color: #fff;
+      padding:8px 12px;
+      border-radius:10px;
+      text-shadow: none;
+    }
+
+    .logo-aside{
+      width:150px;
+      height:150px;
+      border-radius:50%;
+      object-fit:cover;
+      border: 4px solid var(--light-blue);
+      filter:drop-shadow(0 6px 16px rgba(0,0,0,.35));
+      animation:floatY 4.6s ease-in-out infinite;
+    }
+    
+    @keyframes floatY{0%{transform:translateY(0)}50%{transform:translateY(-12px)}100%{transform:translateY(0)}}
+
+    /* --- CARRUSEL ANTES Y DESPUÉS --- */
+    .cases-carousel {
+        max-width: 1100px;
+        margin: 0 auto 40px;
+        padding: 0 20px;
+    }
+    
+    .carousel-title {
+        text-align: center;
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        color: var(--light-blue);
+        text-shadow: 2px 2px 4px #000;
+    }
+
+    .before-after-scroller {
+      display:grid;
+      grid-auto-flow:column;
+      grid-auto-columns: 320px; /* Tarjetas más anchas para ver detalle */
+      gap:20px;
+      overflow-x:auto;
+      padding:15px;
+      background:rgba(0,0,0,.4); 
+      border:1px solid var(--slate);
+      border-radius:14px;
+      scroll-snap-type:x mandatory;
+    }
+    
+    .before-after-scroller::-webkit-scrollbar{height:8px}
+    .before-after-scroller::-webkit-scrollbar-thumb{background:var(--light-blue);border-radius:10px}
+
+    .case-card {
+        scroll-snap-align: center;
+        background: #0f172a;
+        border: 2px solid var(--slate);
+        border-radius: 12px;
+        overflow: hidden;
+        position: relative;
+        transition: transform 0.3s;
+        cursor: none;
+        display: flex;
+        flex-direction: column; /* Organiza título arriba e imagen abajo */
+    }
+    
+    .case-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--light-blue);
+    }
+    
+    .case-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        display: block;
+    }
+    
+    /* Etiqueta del título reubicada */
+    .case-label {
+        background: var(--deep-blue); /* Fondo sólido para el título */
+        color: white;
+        padding: 10px;
+        text-align: center;
+        font-weight: 600;
+        font-size: 1rem;
+        border-bottom: 1px solid var(--slate);
+        text-shadow: none; /* Mejor legibilidad sin sombra aquí */
+    }
+    
+    /* Estilos generales para otros scrollers (galería inferior) */
+    .media-scroller{
+      margin:22px auto 8px;
+      max-width:1100px;
+      display:grid;
+      grid-auto-flow:column;
+      grid-auto-columns:calc(25% - 12px);
+      gap:16px;
+      overflow-x:auto;
+      padding:12px 16px;
+      background:rgba(0,0,0,.6); 
+      border:1px solid var(--slate);
+      border-radius:14px;
+      scroll-snap-type:x mandatory;
+    }
+    
+    @media (max-width: 600px) {
+      .media-scroller {
+        grid-auto-columns: calc(60% - 12px);
+      }
+    }
+
+    .media-scroller::-webkit-scrollbar{height:8px}
+    .media-scroller::-webkit-scrollbar-thumb{background:var(--slate);border-radius:10px}
+    
+    .card{
+      scroll-snap-align:start;
+      background:#0f172a;
+      border:1px solid var(--slate);
+      border-radius:12px;
+      overflow:hidden;
+    }
+    
+    .card img{width:100%;height:160px;object-fit:cover;display:block}
+
+    .float-circle{
+      position:absolute;
+      right:0px;
+      top:0;
+      width:140px;
+      height:140px;
+      border-radius:50%;
+      overflow:hidden;
+      border:3px solid var(--slate);
+      box-shadow:0 14px 28px rgba(0,0,0,.45);
+      background-image:url('https://placehold.co/400x400/17406c/ffffff?text=Folleto+Dra.+Sandra');
+      background-size:cover;
+      background-position:center;
+      animation:driftX 4.8s ease-in-out infinite alternate;
+      transition:width .3s,height .3s,border-radius .3s,transform .3s,box-shadow .3s;
+      z-index: 5;
+    }
+    
+    @keyframes driftX{from{transform:translateX(0)}to{transform:translateX(-24px)}}
+    
+    .float-circle:hover{
+      width:300px;
+      height:200px;
+      border-radius:14px;
+      transform:translateX(-50px);
+      background-size:cover;
+      z-index: 20;
+    }
+
+    .modal{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.85);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:1000;
+      cursor: default;
+    }
+    
+    .modal-box{
+      background:#0f172a;
+      border:1px solid var(--slate);
+      border-radius:14px;
+      max-width:92vw;
+      max-height:90vh;
+      padding:12px;
+      position:relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .modal-box img{
+      max-width:100%;
+      max-height:70vh;
+      border-radius:10px;
+      display:block;
+    }
+    
+    .modal-caption{margin-top:10px;color:var(--very-light);text-align:center; text-shadow: none;}
+    
+    .nav{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      background:rgba(0,0,0,.6);
+      border:1px solid var(--slate);
+      width:42px;
+      height:42px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#fff;
+      font-size:28px;
+      cursor:none;
+      user-select:none;
+      z-index: 1001;
+    }
+    
+    .nav:hover{background:var(--deep-blue)}
+    #prevBtn{left:10px}
+    #nextBtn{right:10px}
+    
+    .modal-actions {
+        margin-top: 15px;
+    }
+    
+    .btn {
+        background: var(--deep-blue);
+        color: white;
+        padding: 8px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        cursor: none;
+    }
+    
+    .btn:hover {
+        background: var(--light-blue);
+        color: var(--very-dark);
+    }
+
+    footer{
+      text-align:center;
+      padding:18px;
+      background:var(--deep-blue);
+      color:var(--very-light);
+      border-top:1px solid var(--slate);
+      text-shadow: none;
+    }
+    
+    /* CURSOR MUELITA CONFIG */
+    #toothCursor {
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 9999;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 24px;
+      text-shadow: 0 0 5px rgba(0,0,0,0.5);
+      transition: transform 0.1s ease-out;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+    }
+
+    /* Brillo suave */
+    @keyframes toothGlow {
+      0% { text-shadow: 0 0 5px var(--light-blue); }
+      50% { text-shadow: 0 0 15px var(--light-blue), 0 0 25px white; }
+      100% { text-shadow: 0 0 5px var(--light-blue); }
+    }
+    
+    #toothCursor i {
+      animation: toothGlow 2s infinite;
+    }
+
+    /* Estado hover: Muela más grande y girada */
+    #toothCursor.hover {
+      transform: translate(-50%, -50%) scale(1.5) rotate(-15deg);
+    }
+    
+    #toothCursor.hover i {
+      color: var(--light-blue);
+    }
+
+    /* Estado activo: Click */
+    #toothCursor.active {
+      transform: translate(-50%, -50%) scale(0.9);
+    }
+
+    /* --- ESTILOS DEL CHAT IA --- */
+    .ai-fab {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      /* Ajuste de tamaño para incluir texto */
+      width: auto; 
+      height: auto;
+      padding: 12px 24px;
+      
+      background: linear-gradient(135deg, var(--deep-blue), var(--ai-accent));
+      border-radius: 50px; /* Forma de píldora */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px; /* Espacio entre icono y texto */
+      
+      color: white;
+      font-size: 16px;
+      font-weight: 700; /* Negrita */
+      text-transform: uppercase; /* Texto llamativo */
+      letter-spacing: 0.5px;
+      
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      cursor: none;
+      z-index: 900;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s;
+      border: 2px solid rgba(255,255,255,0.2); /* Borde sutil para resaltar */
+      
+      /* Animación para hacerlo llamativo */
+      animation: pulseBtn 2s infinite;
+    }
+
+    @keyframes pulseBtn {
+      0% { box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.7); transform: scale(1); }
+      70% { box-shadow: 0 0 0 15px rgba(168, 85, 247, 0); transform: scale(1.05); }
+      100% { box-shadow: 0 0 0 0 rgba(168, 85, 247, 0); transform: scale(1); }
+    }
+
+    .ai-fab:hover {
+      background: linear-gradient(135deg, var(--ai-accent), var(--deep-blue));
+      animation: none; /* Detener pulso al hacer hover */
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(168, 85, 247, 0.6);
+    }
+
+    .ai-fab i {
+      font-size: 24px; /* Icono más grande */
+    }
+
+    /* Solución para móvil: Botón IA redondo y más pequeño para evitar solapamiento */
+    @media (max-width: 768px) {
+        .ai-fab span {
+            display: none; /* Ocultar texto */
+        }
+        .ai-fab {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            padding: 0;
+            bottom: 20px; /* Mantener abajo */
+        }
+        .ai-fab i {
+            margin: 0; /* Centrar icono */
+        }
+        /* Ajustar widget de chat para que no sea muy ancho en móvil */
+        .chat-widget {
+            width: 90%;
+            right: 5%;
+            left: 5%;
+            bottom: 90px;
+        }
+    }
+
+    .chat-widget {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      width: 350px;
+      height: 450px;
+      background: #0f172a;
+      border: 1px solid var(--slate);
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      display: none;
+      flex-direction: column;
+      z-index: 900;
+      overflow: hidden;
+      text-shadow: none;
+    }
+
+    .chat-widget.active {
+      display: flex;
+      animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .chat-header {
+      background: linear-gradient(90deg, var(--deep-blue), var(--ai-accent));
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+    }
+
+    .chat-header h3 {
+      margin: 0;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .chat-close {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 20px;
+      cursor: none;
+      padding: 0;
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 15px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .message {
+      max-width: 80%;
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    .message.bot {
+      background: #1e293b;
+      color: var(--very-light);
+      align-self: flex-start;
+      border-bottom-left-radius: 2px;
+    }
+
+    .message.user {
+      background: var(--ai-accent);
+      color: white;
+      align-self: flex-end;
+      border-bottom-right-radius: 2px;
+    }
+
+    .chat-input-area {
+      padding: 12px;
+      background: #1e293b;
+      border-top: 1px solid var(--slate);
+      display: flex;
+      gap: 8px;
+    }
+
+    .chat-input {
+      flex: 1;
+      background: #0f172a;
+      border: 1px solid var(--slate);
+      border-radius: 20px;
+      padding: 8px 14px;
+      color: white;
+      font-family: inherit;
+    }
+
+    .chat-input:focus {
+      outline: none;
+      border-color: var(--light-blue);
+    }
+
+    .chat-send-btn {
+      background: var(--light-blue);
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      color: var(--very-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: none;
+      transition: background 0.2s;
+    }
+    
+    .chat-send-btn:hover {
+        background: white;
+    }
+    
+    .typing-indicator {
+      font-size: 0.8rem;
+      color: var(--slate);
+      margin-left: 10px;
+      display: none;
+    }
+    
+    .chat-quick-actions {
+        padding: 8px 15px 0;
+        display: flex;
+        gap: 6px;
+        overflow-x: auto;
+    }
+    
+    .quick-chip {
+        background: rgba(148, 179, 196, 0.15);
+        border: 1px solid var(--slate);
+        border-radius: 12px;
+        padding: 4px 10px;
+        font-size: 0.75rem;
+        color: var(--light-blue);
+        cursor: none;
+        white-space: nowrap;
+        transition: all 0.2s;
+    }
+    
+    .quick-chip:hover {
+        background: var(--light-blue);
+        color: var(--very-dark);
+    }
+    
+    /* --- ESTILOS DEL BOTÓN WHATSAPP --- */
+    .whatsapp-fab {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      width: 60px;
+      height: 60px;
+      background: #25D366; /* WhatsApp Green */
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 32px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      cursor: none;
+      z-index: 900;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-decoration: none;
+      text-shadow: none;
+    }
+
+    .whatsapp-fab:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+    }
+
+    /* Estilo del letrero "Agenda tu cita aquí" */
+    .wa-label {
+      position: absolute;
+      bottom: 70px; /* Justo encima del botón */
+      left: 50%;
+      transform: translateX(-50%);
+      background: white;
+      color: var(--deep-blue);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.8rem; /* Slightly smaller to fit better */
+      font-weight: 700;
+      white-space: normal; /* Allow multi-line */
+      text-align: center; /* Center the two lines */
+      line-height: 1.2; /* Spacing between lines */
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      pointer-events: none; 
+      z-index: 899;
+      min-width: 100px; /* Ensure it has some width for the lines */
+      animation: floatLabel 2s infinite ease-in-out;
+    }
+    /* Flechita del letrero */
+    .wa-label::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -6px;
+        border-width: 6px;
+        border-style: solid;
+        border-color: white transparent transparent transparent;
+    }
+    
+    @keyframes floatLabel {
+        0%, 100% { transform: translateX(-50%) translateY(0); }
+        50% { transform: translateX(-50%) translateY(-6px); }
+    }
+
+    /* --- ESTILOS DEL BOTÓN PROMO NAVIDAD (CAMPANA) --- */
+    .promo-fab {
+      position: fixed;
+      top: 130px; /* Superior izquierda */
+      right: 20px; /* Derecha */
+      
+      background: none; 
+      border: none;
+      box-shadow: none;
+      padding: 0;
+      
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      z-index: 1002;
+      animation: swingPromo 2s ease-in-out infinite alternate;
+      text-decoration: none;
+    }
+
+    .promo-fab i {
+        font-size: 3.5rem; /* Icono gigante */
+        color: var(--christmas-gold); /* Campana dorada */
+        filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5));
+        transition: transform 0.3s;
+    }
+    
+    .promo-fab span {
+        background: #fff;
+        color: #b45309; /* Texto oscuro dorado para contraste */
+        padding: 2px 8px;
+        border-radius: 10px;
+        font-weight: 800;
+        font-size: 0.8rem;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        margin-top: -10px;
+        z-index: 2;
+    }
+
+    .promo-fab:hover i {
+        transform: scale(1.2) rotate(-10deg);
+    }
+    
+    @keyframes swingPromo {
+        from { transform: rotate(10deg); }
+        to { transform: rotate(-10deg); }
+    }
+
+    /* Ajuste para móvil: hacerlo un poco más pequeño */
+    @media (max-width: 768px) {
+        .promo-fab {
+            top: 130px; 
+            right: 10px; /* A la derecha en movil también */
+        }
+        .promo-fab i {
+            font-size: 3rem;
+        }
+    }
+
+    /* LUCES DE NAVIDAD */
+    .christmas-lights {
+      position: fixed;
+      top: -15px; /* Ajustar para que parezcan colgar del borde */
+      left: 0;
+      width: 100%;
+      height: 30px;
+      padding: 0;
+      margin: 0;
+      z-index: 998; /* Detrás del menú si es sticky, o delante? Menú es z-index 100. Lights should be above or below? Maybe above header but below modal. */
+      /* Nav has z-index 100. Let's make lights z-index 101 so they drape over. */
+      pointer-events: none;
+      display: flex;
+      justify-content: space-evenly;
+      list-style: none;
+    }
+
+    .light-bulb {
+      position: relative;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #eee;
+      animation-name: flash;
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
+    }
+    
+    /* Cable */
+    .christmas-lights::before {
+        content: "";
+        position: absolute;
+        top: -5px; /* Ajuste del cable */
+        left: 0;
+        width: 100%;
+        height: 10px;
+        border-bottom: 2px solid #222;
+        z-index: -1;
+    }
+
+    .light-bulb:nth-child(odd) { animation-duration: 1.8s; background: #f00; box-shadow: 0 0 10px #f00; }
+    .light-bulb:nth-child(2n+1) { animation-duration: 1.2s; background: #0f0; box-shadow: 0 0 10px #0f0; }
+    .light-bulb:nth-child(3n+1) { animation-duration: 2.5s; background: #ffd700; box-shadow: 0 0 10px #ffd700; }
+    .light-bulb:nth-child(4n+1) { animation-duration: 1.5s; background: #00f; box-shadow: 0 0 10px #00f; }
+
+    @keyframes flash {
+      0%, 100% { opacity: 1; transform: scale(1.1); }
+      50% { opacity: 0.4; transform: scale(0.9); }
+    }
+
+    /* NIEVE */
+    .snowflake {
+      position: fixed;
+      top: -10px;
+      color: #fff;
+      font-size: 1.2em;
+      pointer-events: none;
+      z-index: 9999; /* Sobre todo, pero sin bloquear clicks */
+      user-select: none;
+      animation-name: fall;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      text-shadow: 0 0 5px #fff;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-10vh) translateX(0); opacity: 1; }
+      100% { transform: translateY(105vh) translateX(20px); opacity: 0.3; }
+    }
+
+    /* --- DASHBOARD ADMIN STYLES --- */
+    #admin-dashboard {
+      display: none; /* Oculto por defecto */
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 23, 42, 0.98);
+      z-index: 10000;
+      padding: 20px;
+      overflow-y: auto;
+      color: white;
+    }
+
+    .dashboard-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: #1e293b;
+      border-radius: 12px;
+      padding: 30px;
+      border: 1px solid var(--slate);
+    }
+
+    .dashboard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      border-bottom: 1px solid var(--slate);
+      padding-bottom: 20px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .stat-card {
+      background: #0f172a;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid var(--slate);
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--light-blue);
+      margin: 10px 0;
+    }
+
+    .stat-label {
+      color: var(--very-light);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .chart-container {
+      background: #0f172a;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid var(--slate);
+      margin-bottom: 20px;
+    }
+
+    .close-dashboard {
+      background: var(--christmas-red);
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <!-- Se añade ID para el control JS del logo -->
+    <img 
+        id="main-logo"
+        class="banner-full" 
+        src="https://lh3.googleusercontent.com/pw/AP1GczMEIXwxgR0KqY2ad1ITBNBk8n4BBp7fK1IKBs_RmId_MpeqLd8Uawk1ZdLJAienoX8C_M-QotVYBMKhPENKr19SK8oMG7qcuq3dS5-S59Qb07rlOzARLdP4V-b-g_KQov32VqmxRR5q5sO4vFFr0g0=w886-h430-s-no-gm?authuser=0" 
+        alt="Banner Odontología" 
+    />
+  </header>
+
+  <nav>
+    <div class="menu-item" onclick="window.scrollTo({top:0, behavior:'smooth'})">Inicio</div>
+    <div class="menu-item">Limpieza
+      <div class="submenu">
+        <a href="#profilaxis">Profilaxis</a>
+        <a href="#detartraje">Detartraje</a>
+        <a href="#fluorizacion">Fluorización</a>
+      </div>
+    </div>
+    <div class="menu-item">Ortodoncia
+      <div class="submenu">
+        <a href="#brackets-metalicos">Brackets metálicos</a>
+        <a href="#brackets-esteticos">Brackets estéticos</a>
+        <a href="#alineadores-invisibles">Alineadores invisibles</a>
+      </div>
+    </div>
+    <div class="menu-item">Estética Dental
+      <div class="submenu">
+        <a href="#blanqueamiento">Blanqueamiento</a>
+        <a href="#carillas">Carillas</a>
+        <a href="#diseno-sonrisa">Diseño de sonrisa</a>
+      </div>
+    </div>
+    <div class="menu-item">Implantes
+      <div class="submenu">
+        <a href="#implantes-unitarios">Implantes unitarios</a>
+        <a href="#protesis-fija">Prótesis fija</a>
+        <a href="#rehabilitacion-oral">Rehabilitación oral</a>
+      </div>
+    </div>
+    <div class="menu-item">Contacto
+      <div class="submenu">
+        <div class="group-title">AGENDAR CITA</div>
+        <a href="https://wa.me/573204437948" id="wa-menu-link" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        <div class="group-divider"></div>
+
+        <div class="group-title">UBICACIÓN</div>
+        <a href="https://maps.app.goo.gl/wCSBxh3XcK5WZLySA" target="_blank"><i class="fas fa-map-marker-alt"></i> Google Maps</a>
+        <a href="https://ul.waze.com/ul?ll=4.64269648%2C-74.13749099&navigate=yes&zoom=17&utm_campaign=default&utm_source=waze_website&utm_medium=lm_share_location" target="_blank"><i class="fab fa-waze"></i> Waze</a>
+        <div class="group-divider"></div>
+
+        <div class="group-title">REDES SOCIALES</div>
+        <a href="https://www.instagram.com/odontosmilesandra?igsh=MTE3b2NqaHhyaHV5cg==" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+        <a href="https://www.facebook.com/share/17dVALTAce/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- SECCIÓN HERO (INICIO) - Estilo Empresarial con Fondo -->
+    <section class="hero" id="inicio">
+      <div class="hero-content">
+        <h1>Dra. Sandra Milena Torres G.</h1>
+        <p>Odontóloga graduada de la Fundación Universitaria San Martín, con más de 20 años de experiencia en odontología integral y neurofocal. Mi propósito es brindar atención humana, ética y personalizada, enfocada en la prevención y en el bienestar general de cada paciente.</p>
+        
+        <ul class="features-list">
+            <li><i class="fas fa-check-circle"></i> Enfoque integral y neurofocal</li>
+            <li><i class="fas fa-check-circle"></i> Atención cálida y personalizada</li>
+            <li><i class="fas fa-check-circle"></i> Trabajo interdisciplinario</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SECCIÓN CARRUSEL ANTES Y DESPUÉS (INICIO - PARTE INFERIOR) -->
+    <section class="cases-carousel">
+        <h3 class="carousel-title">Transformaciones: Antes y Después</h3>
+        <div class="before-after-scroller">
+            
+            <!-- Caso 1: Diseño de Sonrisa -->
+            <div class="case-card">
+                <div class="case-label">Diseño de Sonrisa</div>
+                <img src="https://lh3.googleusercontent.com/pw/AP1GczNabBtzTA2ZEARlN-C_wjteKIrn67nkcgkpfGh12t4OPapGomnua0gWPlwqGYpzbNUNQkNhgtmW-PsHmRA0FPMoi73YqgZp5MtXBCxPcI4ZjHsYNTwZzbtCAum0bDqDAjaeafVtqR_-rdEOAvksD9Mm=w1733-h945-s-no-gm?authuser=0" alt="Diseño de Sonrisa">
+            </div>
+
+            <!-- Caso 2: Blanqueamiento Dental -->
+            <div class="case-card">
+                <div class="case-label">Blanqueamiento Dental</div>
+                <img src="https://lh3.googleusercontent.com/pw/AP1GczM0aTVmGWc3wTblfToZZm_PTErPJhWdn_0eZz2FOl_xWiv0_cewsR0jx4d4yGoZ0h94KMH0UQUN3PMJtiYZEAU585gRobVpeql1Q9OD18J9JIOXLELdsmgZVlp6J3UzYSf0DGA72iS7AxG-oFNobZK7=w825-h450-s-no-gm?authuser=0" alt="Blanqueamiento Dental">
+            </div>
+
+            <!-- Caso 3: Ortodoncia -->
+            <div class="case-card">
+                <div class="case-label">Ortodoncia</div>
+                <img src="https://lh3.googleusercontent.com/pw/AP1GczPuozeVBL2mScAsV-TDtUTvA5qcMyhPXEa8DynsDTF0XAJEwS7QKgjryDN7VlLfbKej588TQgZ73jWrBHLh2_I6hdq1kiBq662HlIOYBQ5BYchpzZ27ecQToNm3UDCTZualHK5S3HPKPLZ5u_Y_1HoA=w1733-h945-s-no-gm?authuser=0" alt="Ortodoncia">
+            </div>
+
+            <!-- Caso 4: Rehabilitación Oral -->
+            <div class="case-card">
+                <div class="case-label">Rehabilitación Oral</div>
+                <img src="https://lh3.googleusercontent.com/pw/AP1GczORW1E88yAo8pcClQgWRhAVemLrKBhOuDLoBPeFy_q8r9QNKd2BEmqaJf6YpDh-_BOYsoMtNwNecrwjVxs3_T4oN9tXllWZOuRVcA6QHBV-5xYBLmaids7dTy7ldMV9SSdhfxn66b7Jxn2W05X0L18f=w825-h450-s-no-gm?authuser=0" alt="Rehabilitación Oral">
+            </div>
+
+        </div>
+    </section>
+
+    <!-- NUEVA SECCIÓN PROFILAXIS -->
+    <section id="profilaxis" class="service-section">
+      <div class="service-content">
+        <h2>¡Tu Salud es Nuestra Prioridad: Descubre el Poder de la Profilaxis!</h2>
+        <p><strong>¿Sabías que la mejor medicina es la prevención?</strong></p>
+        <p>La profilaxis es mucho más que una palabra técnica; es tu escudo protector contra enfermedades. Se trata de tomar medidas antes de que aparezcan los problemas, para mantenerte sano y disfrutar de la vida al máximo.</p>
+        <p>Ya sea una limpieza dental profesional para una sonrisa radiante o un chequeo médico preventivo, la profilaxis es la inversión más inteligente que puedes hacer en tu bienestar a largo plazo.</p>
+        <p class="highlight" style="font-size: 1.15rem; margin-top: 10px;">¡No esperes a sentirte mal para cuidarte! Agenda tu cita de profilaxis hoy y toma el control de tu salud.</p>
+      </div>
+      <div class="service-img-container">
+          <img 
+            src="https://lh3.googleusercontent.com/pw/AP1GczPg1RxfyX4wxmwkkIo3j6gr1vHX9gxj9cBwF1tVs7SnIZrI3AtEeo4O6afkAsEptN-8kM2nPF5ORpWL0ayv9voeWUx0vpPCFY92pRxWSyW51aASOG_XTKzpEkew7DQSNd7gw37w9E1NpwNNyw0vR8I=w1024-h559-s-no-gm?authuser=0" 
+            alt="Limpieza Dental Profilaxis" 
+            onerror="this.src='https://placehold.co/600x400/17406c/ffffff?text=FOTO+PENDIENTE';"
+          />
+      </div>
+    </section>
+
+    <!-- NUEVA SECCIÓN DETARTRAJE (Imagen Izquierda) -->
+    <section id="detartraje" class="service-section img-left">
+      <div class="service-img-container">
+          <img 
+            src="https://lh3.googleusercontent.com/pw/AP1GczMVN5MLHDQmi3nbYrk-695Qq0aNh5WYC3NFPgW_q9q0kUPCw8-i2s-vOi74TlmYwq6fF2KH0Rj8Tp49vI5bz6ZEU1YABrVzM4BZ4ckE5eyB9QyDbCNJ5nNJCieoRMQjtnSPXkkeNE07rOLXI2aBu6o=w825-h450-s-no-gm?authuser=0" 
+            alt="Detartraje Dental" 
+            onerror="this.src='https://placehold.co/600x400/17406c/ffffff?text=FOTO+PENDIENTE';"
+          />
+      </div>
+      <div class="service-content">
+        <h2>¡Dale a Tu Sonrisa la Limpieza Profunda que Merece con un Detartraje!</h2>
+        <p><strong>¿Sabías que el cepillado diario no elimina todo el sarro?</strong></p>
+        <p>El detartraje dental es el superhéroe de tu higiene bucal. Es un procedimiento profesional diseñado para eliminar el sarro y la placa bacteriana más rebelde, esa que se esconde donde tu cepillo no llega, especialmente debajo de las encías.</p>
+        
+        <p style="margin-bottom: 10px;"><strong>Beneficios que notarás al instante:</strong></p>
+        <ul class="features-list">
+            <li><i class="fas fa-heartbeat"></i> <strong>Encías más sanas:</strong> Previene el sangrado y enfermedades como la gingivitis.</li>
+            <li><i class="fas fa-star"></i> <strong>Sonrisa más brillante:</strong> Elimina manchas superficiales, devolviendo el blanco natural a tus dientes.</li>
+            <li><i class="fas fa-wind"></i> <strong>Aliento fresco:</strong> Combate las bacterias causantes del mal olor.</li>
+            <li><i class="fas fa-shield-alt"></i> <strong>Protección total:</strong> Es tu mejor defensa contra la pérdida dental a largo plazo.</li>
+        </ul>
+
+        <p class="highlight" style="font-size: 1.15rem; margin-top: 20px;">¡No dejes que el sarro apague tu sonrisa! Agenda tu cita de detartraje hoy y siente la diferencia de una boca verdaderamente limpia y saludable.</p>
+      </div>
+    </section>
+
+    <!-- NUEVA SECCIÓN FLUORIZACIÓN (Texto Izquierda / Imagen Derecha) -->
+    <section id="fluorizacion" class="service-section">
+      <div class="service-content">
+        <h2>¡Escudo Protector para tu Sonrisa: Descubre la Fluorización Dental!</h2>
+        <p><strong>¿Quieres unos dientes más fuertes y resistentes a las caries?</strong></p>
+        <p>La fluorización dental es tu aliado secreto. Es un tratamiento sencillo y rápido donde aplicamos flúor de alta concentración directamente sobre tus dientes. Este mineral mágico fortalece el esmalte, haciéndolo mucho más resistente a los ácidos que provocan las caries.</p>
+        
+        <p style="margin-bottom: 10px;"><strong>Beneficios Clave:</strong></p>
+        <ul class="features-list">
+            <li><i class="fas fa-shield-virus"></i> <strong>Prevención Máxima:</strong> Reduce drásticamente el riesgo de aparición de nuevas caries.</li>
+            <li><i class="fas fa-gem"></i> <strong>Esmalte Blindado:</strong> Fortalece la superficie de tus dientes, haciéndolos más duros.</li>
+            <li><i class="fas fa-magic"></i> <strong>Remineralización:</strong> Puede ayudar a reparar caries en sus etapas iniciales antes de que se conviertan en un problema mayor.</li>
+            <li><i class="fas fa-users"></i> <strong>Ideal para Todos:</strong> Especialmente beneficioso para niños en crecimiento y adultos con mayor riesgo de caries.</li>
+        </ul>
+
+        <p class="highlight" style="font-size: 1.15rem; margin-top: 20px;">¡Invierte en la salud a largo plazo de tu sonrisa! Pregunta por nuestro tratamiento de fluorización en tu próxima visita. ¡Es rápido, indoloro y súper efectivo!</p>
+      </div>
+      <div class="service-img-container">
+          <img 
+            src="https://lh3.googleusercontent.com/pw/AP1GczNM-4Rq9iUBzRLOE49I0jHT6LMwgcjEU8grgeT9XnimXTYDvVITgqTSyEMB79C-4FqxhwHIkut_QcDTzHdSTquiT8HReOJhWUdWXN5JKtOm_oS6SwzjmNs_SUIX0nyZBB87gMrwURnVQkFeeAf20ug=w1733-h945-s-no-gm?authuser=0" 
+            alt="Fluorización Dental" 
+            onerror="this.src='https://placehold.co/600x400/17406c/ffffff?text=FOTO+PENDIENTE';"
+          />
+      </div>
+    </section>
+
+    <!-- NUEVA SECCIÓN BRACKETS METÁLICOS (Imagen Izquierda / Texto Derecha) -->
+    <section id="brackets-metalicos" class="service-section img-left">
+      <div class="service-img-container">
+          <img 
+            src="https://lh3.googleusercontent.com/pw/AP1GczP6ykauLx-m-4baGO8YtPHIeIMUYBqtM3Ag4GQdqJF5ipxvkLZI5ZLhg3w_Mu8VwEGdlkyw6LbXGpRLa3pCIJWXOiYY00Ob9ISAgigwndiiqU_sMDcQMfHazhKAj67CXUGVsRLmpaCbisZfSqU7JLg=w945-h945-s-no-gm?authuser=0" 
+            alt="Brackets Metálicos" 
+            onerror="this.src='https://placehold.co/600x400/17406c/ffffff?text=FOTO+PENDIENTE';"
+          />
+      </div>
+      <div class="service-content">
+        <h2>Brackets Metálicos: La Solución Clásica y Efectiva para una Sonrisa Perfecta</h2>
+        <p><strong>¿Buscas una forma probada de alinear tus dientes?</strong></p>
+        <p>Los brackets metálicos son la opción más tradicional y confiable en ortodoncia. Gracias a los avances en su diseño, son más pequeños y cómodos que nunca, ofreciendo resultados excepcionales para corregir todo tipo de problemas de alineación dental y mordida.</p>
+        
+        <p style="margin-bottom: 10px;"><strong>¿Por qué elegir brackets metálicos?</strong></p>
+        <ul class="features-list">
+            <li><i class="fas fa-check-double"></i> <strong>Altamente Efectivos:</strong> Capaces de corregir casos complejos con gran precisión.</li>
+            <li><i class="fas fa-shield-alt"></i> <strong>Durabilidad:</strong> Fabricados con acero inoxidable de alta calidad, son muy resistentes.</li>
+            <li><i class="fas fa-piggy-bank"></i> <strong>Costo-Efectivos:</strong> Generalmente, son una de las opciones de ortodoncia más accesibles.</li>
+            <li><i class="fas fa-chart-line"></i> <strong>Resultados Predecibles:</strong> Con un historial comprobado de éxito, puedes confiar en que lograrás la sonrisa que deseas.</li>
+        </ul>
+
+        <p class="highlight" style="font-size: 1.15rem; margin-top: 20px;">¡Transforma tu sonrisa con la confianza de los brackets metálicos! Agenda una consulta y descubre si son la opción ideal para ti.</p>
+      </div>
+    </section>
+
+    <!-- NUEVA SECCIÓN BRACKETS ESTÉTICOS (Texto Izquierda / Imagen Derecha) -->
+    <section id="brackets-esteticos" class="service-section">
+      <div class="service-content">
+        <h2>¡La Ortodoncia que se Camufla con tu Sonrisa: Descubre los Brackets Estéticos!</h2>
+        <p><strong>¿Quieres alinear tus dientes sin que nadie lo note?</strong></p>
+        <p>Los brackets estéticos son la revolución en ortodoncia para quienes buscan discreción sin renunciar a la eficacia. Olvídate del aspecto metálico; estos brackets están diseñados para mimetizarse con el color natural de tu esmalte, haciéndolo mucho más resistente a los ácidos que provocan las caries.</p>
+        
+        <p style="margin-bottom: 10px;"><strong>¿Por qué elegirlos?</strong></p>
+        <ul class="features-list">
+            <li><i class="far fa-eye-slash"></i> <strong>Discreción Total:</strong> Fabricados en materiales como cerámica o zafiro que se fusionan visualmente con tus dientes.</li>
+            <li><i class="fas fa-check-double"></i> <strong>Eficacia Comprobada:</strong> Corrigen los mismos problemas de alineación que los brackets tradicionales.</li>
+            <li><i class="far fa-smile-beam"></i> <strong>Mayor Confianza:</strong> Sonríe sin complejos durante todo tu tratamiento.</li>
+            <li><i class="fas fa-gem"></i> <strong>Resistencia y Estética:</strong> Los materiales actuales son altamente resistentes y no se manchan con facilidad.</li>
+        </ul>
+
+        <p class="highlight" style="font-size: 1.15rem; margin-top: 20px;">¡Tu nueva sonrisa está más cerca de lo que crees, y nadie notará el proceso! Agenda tu consulta y descubre si la ortodoncia estética es la solución perfecta para ti.</p>
+      </div>
+      <div class="service-img-container">
+          <img 
+            src="https://lh3.googleusercontent.com/pw/AP1GczNzM_JlYIwvW0r5QxL2rqH_BfjdtRJbNoBgh4WQBCVadkbdJ6ZLklLBnXtDomAAk6r78Y5HZf6-SeBJdlv-9rky-HZV_IpzqpJBIX4kZBq7WCGXkHy5V1zeJIQS_VhpTGdMVlR9TXCXdYuGNk7DKJ4=w1733-h945-s-no-gm?authuser=0" 
+            alt="Brackets Estéticos" 
+            onerror="this.src='https://placehold.co/600x400/17406c/ffffff?text=FOTO+PENDIENTE';"
+          />
+      </div>
+    </section>
+
+    <!-- NUEVA SECCIÓN ALINEADORES INVISIBLES (Imagen Izquierda / Texto Derecha) -->
+    <section id="alineadores-invisibles" class="service-section img-left">
+      <div class="service-img-container">
+          <img 
+            src="https://lh3.googleusercontent.com/pw/AP1GczOHulJTzar9bnT8iA-QxBpOsvj2jJT4Yt058tG0Her8sSCuQpkELdDXGRye9hGEdQSNy9Zj3BQ9shZ_duLvqTHHBcfeAHDOIi5tB6np57wQsMe28cmdMhhRg2-sxLFhAU8LzHOpgndGvfZv0wr7owE=w825-h450-s-no-gm?authuser=0" 
+            alt="Alineadores Invisibles" 
+            onerror="this.src='https://placehold.co/600x400/17406c/ffffff?text=FOTO+PENDIENTE';"
+          />
+      </div>
+      <div class="service-content">
+        <h2>¡La Revolución de tu Sonrisa: Descubre los Alineadores Invisibles!</h2>
+        <p><strong>¿Quieres una sonrisa perfecta sin que nadie lo note?</strong></p>
+        <p>Los alineadores invisibles son la alternativa cómoda y transparente a los brackets tradicionales. Son férulas hechas a medida, casi imperceptibles, que enderezan tus dientes mes a mes sin alterar tu vida diaria.</p>
+        
+        <p style="margin-bottom: 10px;"><strong>Beneficios que te encantarán:</strong></p>
+        <ul class="features-list">
+            <li><i class="far fa-grin-stars"></i> <strong>Totalmente Discretos:</strong> Son prácticamente invisibles, ¡nadie sabrá que los llevas puestos!</li>
+            <li><i class="fas fa-hand-sparkles"></i> <strong>Removibles:</strong> Quítatelos fácilmente para comer, cepillarte y usar hilo dental con total libertad.</li>
+            <li><i class="fas fa-feather-alt"></i> <strong>Máxima Comodidad:</strong> Sin alambres ni metal que rocen tus encías o mejillas.</li>
+            <li><i class="fas fa-check"></i> <strong>Resultados Eficaces:</strong> Consigue la sonrisa que siempre soñaste, sin sacrificar tu estilo ni tu comodidad.</li>
+        </ul>
+
+        <p class="highlight" style="font-size: 1.15rem; margin-top: 20px;">¡Transforma tu sonrisa con la ortodoncia del futuro! Agenda tu consulta hoy mismo y descubre si los alineadores invisibles son para ti.</p>
+      </div>
+    </section>
+
+    <!-- NUEVA SECCIÓN BLANQUEAMIENTO (Texto Izquierda / Imagen Derecha) -->
+    <section id="blanqueamiento" class="service-section">
+      <div class="service-content">
+        <h2>¡Ilumina tu Rostro con una Sonrisa Más Blanca y Radiante!</h2>
+        <p><strong>¿Sueñas con unos dientes más blancos que deslumbren?</strong></p>
+        <p>El blanqueamiento dental profesional es tu billete de ida hacia una sonrisa de cine. Es un tratamiento estético seguro y eficaz que elimina las manchas causadas por el café, el té, el tabaco y el paso del tiempo, aclarando el tono de tus dientes de forma notable.</p>
+        
+        <p style="margin-bottom: 10px;"><strong>¿Por qué elegir un blanqueamiento profesional?</strong></p>
+        <ul class="features-list">
+            <li><i class="fas fa-magic"></i> <strong>Resultados Espectaculares:</strong> Consigue una sonrisa varios tonos más blanca en una sola sesión.</li>
+            <li><i class="fas fa-user-md"></i> <strong>Seguridad Total:</strong> Realizado bajo la supervisión de expertos, protegiendo tus encías y esmalte.</li>
+            <li><i class="fas fa-lightbulb"></i> <strong>Eficacia Garantizada:</strong> Utilizamos tecnología avanzada (como luz LED o láser) y geles de alta concentración para resultados superiores a los kits caseros.</li>
+            <li><i class="fas fa-grin-beam"></i> <strong>Confianza Renovada:</strong> Una sonrisa brillante rejuvenece tu rostro y aumenta tu autoestima al instante.</li>
+        </ul>
+
+        <p class="highlight" style="font-size: 1.15rem; margin-top: 20px;">¡No escondas más tu sonrisa! Agenda tu cita hoy mismo y prepárate para brillar con luz propia.</p>
+      </div>
+      <div class="service-img-container">
+          <img 
+            src="https://lh3.googleusercontent.com/pw/AP1GczN7FtcLqmLc06v7BMvvzIP3KI3PI_LvCEdqWAJt2SwzCFxrP03Nl4909TRmZVtoF8XdytAdoo2XyboetfLxids8Em9kX0qfMHxW8U95EfEiRXci4OIHdsRF-xhHqjjzBgd76V1NUXPR3vP0LImyquc=w825-h450-s-no-gm?authuser=0" 
+            alt="Blanqueamiento Dental" 
+            onerror="this.src='https://placehold.co/600x400/17406c/ffffff?text=FOTO+PENDIENTE';"
+          />
+      </div>
+    </section>
+
+    <!-- NUEVA SECCIÓN CARILLAS (Imagen Izquierda / Texto Derecha) -->
+    <section id="carillas" class="service-section img-left">
+      <div class="service-img-container">
+          <img 
+            src="https://lh3.googleusercontent.com/pw/AP1GczM3PCuyxsxuRtG76BvQb0hXQUCfMmMTPMa_pEE33xC9atyhov0SgeoA3xLjZHToRlHfrrj7HDoNhHzGSchGsWXusCllSYKDJNW_iObP9bTs0rWPSZKgub6oF9Mp4l8gWLkmnfU3L2AJqIjgG2bWc8M=w1733-h945-s-no-gm?authuser=0" 
+            alt="Carillas Dentales" 
+            onerror="this.src='https://placehold.co/600x400/17406c/ffffff?text=FOTO+PENDIENTE';"
+          />
+      </div>
+      <div class="service-content">
+        <h2>¡Diseña la Sonrisa de tus Sueños con Carillas Dentales!</h2>
+        <p><strong>¿Quieres una transformación total de tu sonrisa de forma rápida y espectacular?</strong></p>
+        <p>Las carillas dentales son el secreto de las sonrisas de Hollywood. Son finas láminas personalizadas que se adhieren a la parte frontal de tus dientes, corrigiendo imperfecciones y creando una estética perfecta y natural.</p>
+        
+        <p style="margin-bottom: 5px;"><strong>Tipos de Carillas:</strong></p>
+        <ul class="features-list">
+            <li><i class="far fa-gem"></i> <strong>Porcelana:</strong> La opción premium. Altamente resistentes a las manchas, duraderas (15-20 años) y ofrecen la estética más natural y translúcida.</li>
+            <li><i class="fas fa-paint-brush"></i> <strong>Composite:</strong> Alternativa rápida y económica. Se modelan directamente en una sesión. Fáciles de reparar (duración 5-7 años).</li>
+        </ul>
+
+        <p style="margin-bottom: 5px; margin-top: 15px;"><strong>¿Qué pueden corregir?</strong></p>
+        <ul class="features-list">
+            <li><i class="fas fa-check"></i> Dientes manchados o descoloridos.</li>
+            <li><i class="fas fa-check"></i> Dientes desgastados, astillados o rotos.</li>
+            <li><i class="fas fa-check"></i> Dientes ligeramente desalineados.</li>
+            <li><i class="fas fa-check"></i> Espacios entre los dientes (diastemas).</li>
+        </ul>
+
+        <p class="highlight" style="font-size: 1.15rem; margin-top: 20px;">¡Tu nueva sonrisa te está esperando! Agenda una consulta para descubrir qué tipo de carillas son las ideales para ti.</p>
+      </div>
+    </section>
+
+    <!-- NUEVA SECCIÓN DISEÑO DE SONRISA (Texto Izquierda / Imagen Derecha) -->
+    <section id="diseno-sonrisa" class="service-section">
+      <div class="service-content">
+        <h2>¡Rediseña tu Sonrisa y Transforma tu Rostro!</h2>
+        <p><strong>¿Alguna vez has soñado con tener una sonrisa perfecta y armónica?</strong></p>
+        <p>El diseño de sonrisa es mucho más que un tratamiento; es un arte. Mediante un análisis digital detallado de tus rasgos faciales y dentales, creamos un plan personalizado para conseguir la sonrisa que siempre has deseado, en perfecta armonía con tu rostro.</p>
+        
+        <p style="margin-bottom: 10px;"><strong>¿Qué incluye este proceso?</strong></p>
+        <ul class="features-list">
+            <li><i class="fas fa-laptop-medical"></i> <strong>Planificación Digital 3D:</strong> Visualiza el resultado final antes de empezar cualquier tratamiento.</li>
+            <li><i class="fas fa-tools"></i> <strong>Combinación de Técnicas:</strong> Puede incluir blanqueamiento, carillas, coronas, o incluso pequeños ajustes de encía, según tus necesidades.</li>
+            <li><i class="far fa-smile"></i> <strong>Resultados Naturales:</strong> Buscamos la perfección estética sin perder la naturalidad, adaptando la forma, color y tamaño de los dientes a tus facciones.</li>
+            <li><i class="fas fa-heart"></i> <strong>Aumento de Confianza:</strong> Una sonrisa nueva y radiante te hará sentir más seguro y feliz en tu día a día.</li>
+        </ul>
+
+        <p class="highlight" style="font-size: 1.15rem; margin-top: 20px;">¡Da el primer paso hacia la sonrisa de tus sueños! Agenda tu cita de valoración y descubre cómo podemos transformar tu imagen y tu autoestima.</p>
+      </div>
+      <div class="service-img-container">
+          <img 
+            src="https://lh3.googleusercontent.com/pw/AP1GczNWL0KFlUJwsh6FPgIFkm19KT62njGL_4ATb767hF1Gha0tX9NML6xHqMknx0_exWsBySysBshk742afwH2IwyCeSBoyocPJWJhhd67pyQ9msh0NzKWh7TLsxoofGiycFgsTtd-3HUomiWl7Vea2VJg=w1733-h945-s-no-gm?authuser=0" 
+            alt="Diseño de Sonrisa Digital" 
+            onerror="this.src='https://placehold.co/600x400/17406c/ffffff?text=FOTO+PENDIENTE';"
+          />
+      </div>
+    </section>
+
+    <!-- NUEVA SECCIÓN IMPLANTES UNITARIOS (Imagen Izquierda / Texto Derecha) -->
+    <section id="implantes-unitarios" class="service-section img-left">
+      <div class="service-img-container">
+          <img 
+            src="https://lh3.googleusercontent.com/pw/AP1GczPDSGwJdVlTKJeG1oMlEar7TzPj5ZnoQu9YVk3Y4VnDx7QBxCtQhM3nAEfxgISjGbizsca1ZWSZ3j8SViTJZRR_JZ88p8DfOKONKXctINHBbTXQeeKDXSmVpkRWX3_Dg0pRcrcTGsJtiVKi_y9dsIwI=w1733-h945-s-no-gm?authuser=0" 
+            alt="Implantes Unitarios" 
+            onerror="this.src='https://placehold.co/600x400/17406c/ffffff?text=FOTO+PENDIENTE';"
+          />
+      </div>
+      <div class="service-content">
+        <h2>¡Recupera tu Diente Perdido y Vuelve a Sonreír con Confianza!</h2>
+        <p><strong>¿Te falta una pieza dental? Los implantes unitarios son la solución definitiva y más natural.</strong></p>
+        <p>Olvídate de los puentes que dañan dientes sanos o de las prótesis incómodas. Un implante dental unitario es la opción más avanzada para reemplazar un diente perdido, desde la raíz hasta la corona. Se trata de un pequeño tornillo de titanio que se integra en tu hueso, sobre el cual colocamos un diente de porcelana hecho a tu medida.</p>
+        
+        <p style="margin-bottom: 10px;"><strong>¿Por qué es la mejor opción?</strong></p>
+        <ul class="features-list">
+            <li><i class="fas fa-check-circle"></i> <strong>Se ve y se siente 100% natural:</strong> Nadie notará la diferencia.</li>
+            <li><i class="fas fa-infinity"></i> <strong>Solución Fija y Permanente:</strong> Diseñado para durar toda la vida con los cuidados adecuados.</li>
+            <li><i class="fas fa-shield-alt"></i> <strong>Protege tu Boca:</strong> Evita la pérdida de hueso y no requiere desgastar los dientes vecinos.</li>
+            <li><i class="fas fa-apple-alt"></i> <strong>Funcionalidad Total:</strong> Vuelve a comer, hablar y reír sin ninguna preocupación.</li>
+        </ul>
+
+        <p class="highlight" style="font-size: 1.15rem; margin-top: 20px;">¡Invierte en tu salud y completa tu sonrisa! Agenda una consulta para evaluar tu caso y descubre cómo un implante unitario puede cambiar tu vida.</p>
+      </div>
+    </section>
+
+    <!-- NUEVA SECCIÓN PRÓTESIS FIJA (Texto Izquierda / Imagen Derecha) -->
+    <section id="protesis-fija" class="service-section">
+      <div class="service-content">
+        <h2>¡Recupera la Firmeza y la Funcionalidad de tu Sonrisa con Prótesis Fija!</h2>
+        <p><strong>¿Necesitas reparar un diente dañado o reemplazar uno perdido de forma permanente?</strong></p>
+        <p>La prótesis fija es la solución robusta y estética que buscas. Incluye tratamientos como las coronas (fundas para reforzar dientes dañados) y los puentes (para sustituir uno o más dientes ausentes). Son "dientes nuevos" hechos a medida que se cementan firmemente en tu boca.</p>
+        
+        <p style="margin-bottom: 10px;"><strong>Beneficios que transformarán tu vida:</strong></p>
+        <ul class="features-list">
+            <li><i class="fas fa-tooth"></i> <strong>Como tus propios dientes:</strong> Se sienten, se ven y funcionan de manera natural.</li>
+            <li><i class="fas fa-lock"></i> <strong>Comodidad Total:</strong> Olvídate de las prótesis de quita y pon; estas son fijas y seguras.</li>
+            <li><i class="fas fa-utensils"></i> <strong>Recupera la Masticación:</strong> Vuelve a comer tus alimentos favoritos con total confianza.</li>
+            <li><i class="fas fa-shield-alt"></i> <strong>Durabilidad y Estética:</strong> Fabricadas con materiales resistentes y del color de tus dientes para una sonrisa bonita y duradera.</li>
+        </ul>
+
+        <p class="highlight" style="font-size: 1.15rem; margin-top: 20px;">¡Vuelve a sonreír y a vivir sin limitaciones! Agenda tu valoración y descubre cómo una prótesis fija puede devolverte la calidad de vida que mereces.</p>
+      </div>
+      <div class="service-img-container">
+          <img 
+            src="https://lh3.googleusercontent.com/pw/AP1GczNG3N9p1PA0ixxctmrUntsBb5x1J6gLjjz9cRvC-cauige7m7_5bpTQ_lRIB3DIli4QXEBBNYT3T_ThGOQnYFOiEUz3hHfj-EGDNwZIawAI8ne_O1O5bRHPik2RP6to6iy_jWhHzhfAu0sCFtRlnmJU=w1733-h945-s-no-gm?authuser=0" 
+            alt="Prótesis Fija" 
+            onerror="this.src='https://placehold.co/600x400/17406c/ffffff?text=FOTO+PENDIENTE';"
+          />
+      </div>
+    </section>
+
+    <!-- NUEVA SECCIÓN REHABILITACIÓN ORAL (Imagen Izquierda / Texto Derecha) -->
+    <section id="rehabilitacion-oral" class="service-section img-left">
+      <div class="service-img-container">
+          <img 
+            src="https://lh3.googleusercontent.com/pw/AP1GczNHfPKVW2nuBqw2DSKz5CFi4vVygybCO_PqYJAFrUJomNauslpd2fvRgocllZwIqEd1CzZz6NffmllWhVQ76NktQZkro3TgOjqUNyfi25dG6FH8h8mu80BKdTvoIX4gdCms0I-GorB5vFNs-TEd46AV=w1733-h945-s-no-gm?authuser=0" 
+            alt="Rehabilitación Oral" 
+            onerror="this.src='https://placehold.co/600x400/17406c/ffffff?text=FOTO+PENDIENTE';"
+          />
+      </div>
+      <div class="service-content">
+        <h2>Transformación Total: Recupera la Salud, Función y Belleza de tu Boca</h2>
+        <p><strong>¿Sientes que tu boca necesita un "reinicio" completo?</strong></p>
+        <p>La Rehabilitación Oral es la solución integral para los casos más complejos. Cuando faltan múltiples piezas, hay desgaste severo o problemas generalizados, no basta con un simple arreglo. Necesitas un plan maestro que combine lo mejor de la odontología (implantes, coronas, prótesis, estética) para reconstruir tu boca desde cero.</p>
+        
+        <p style="margin-bottom: 10px;"><strong>Lo que conseguirás:</strong></p>
+        <ul class="features-list">
+            <li><i class="fas fa-hammer"></i> <strong>Funcionalidad Plena:</strong> Vuelve a masticar cualquier alimento con fuerza y seguridad.</li>
+            <li><i class="fas fa-magic"></i> <strong>Estética Rejuvenecedora:</strong> Una sonrisa nueva, completa y armónica que te quita años de encima.</li>
+            <li><i class="fas fa-heartbeat"></i> <strong>Salud Integral:</strong> Resolvemos problemas de encías, mordida y hueso para una solución duradera.</li>
+            <li><i class="fas fa-smile"></i> <strong>Confianza Absoluta:</strong> Recupera la seguridad al hablar y reír sin complejos.</li>
+        </ul>
+
+        <p class="highlight" style="font-size: 1.15rem; margin-top: 20px;">Recupera tu calidad de vida. Agenda una valoración con nuestros especialistas y diseñemos juntos el plan para devolverte la sonrisa que mereces.</p>
+      </div>
+    </section>
+
+    <!-- Se ha eliminado el carrusel inferior (media-scroller) como solicitaste -->
+
+  </main>
+
+  <!-- MODAL -->
+  <div class="modal" id="modal">
+    <div class="modal-box">
+      <div class="nav" id="prevBtn"><i class="fas fa-chevron-left"></i></div>
+      <img id="modalImg" src="" alt="Vista Previa" />
+      <div class="nav" id="nextBtn"><i class="fas fa-chevron-right"></i></div>
+      
+      <div class="modal-caption" id="modalCaption">&nbsp;</div>
+      <div class="modal-actions">
+        <a class="btn" href="#" id="closeModal">Cerrar</a>
+      </div>
+    </div>
+  </div>
+  
+  <!-- DASHBOARD DE ADMINISTRADOR (Oculto por defecto) -->
+  <div id="admin-dashboard">
+    <div class="dashboard-container">
+      <div class="dashboard-header">
+        <h2>📊 Panel de Estadísticas | Dra. Sandra Torres</h2>
+        <button class="close-dashboard" id="closeAdminBtn">Cerrar Panel</button>
+      </div>
+      
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-label">Visitas Totales</div>
+          <div class="stat-number" id="visitCount">0</div>
+          <small>Cargas de página únicas</small>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Clics en WhatsApp</div>
+          <div class="stat-number" id="whatsappCount">0</div>
+          <small>Interacción directa</small>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Clics Promo Navidad</div>
+          <div class="stat-number" id="promoCount">0</div>
+          <small>Interés en promociones</small>
+        </div>
+      </div>
+
+      <div class="chart-container">
+        <canvas id="interactionsChart"></canvas>
+      </div>
+    </div>
+  </div>
+  
+  <!-- BOTÓN FLOTANTE WHATSAPP (Auxiliar) con LETRERO -->
+  <div style="position: fixed; bottom: 20px; left: 20px; z-index: 900;">
+      <a href="https://wa.me/573204437948?text=Hola,%20quisiera%20hacer%20una%20consulta%20general%20con%20la%20auxiliar." 
+         class="whatsapp-fab" 
+         id="whatsapp-btn"
+         target="_blank" 
+         title="Consultas con Auxiliar"
+         style="position: static; display: flex;"> <!-- Override para que funcione dentro del div -->
+        <i class="fab fa-whatsapp"></i>
+      </a>
+      <div class="wa-label">Agenda tu<br>cita aquí</div> <!-- Added <br> -->
+  </div>
+
+  <!-- BOTÓN FLOTANTE PROMO NAVIDAD (Campana) -->
+  <a href="https://lh3.googleusercontent.com/pw/AP1GczNq8f14TjpBBFflLMTftePpoeSvhY_zxb3gQPuB0KwlPgEHRfBLdIvp348vy3VyuoP0m6Wyc3ouZ2c34jX_U1EH3PfprUEVeugKEE1kxiHeK1TWyRrVIKUfFPs5eAELcaP1V5gfjRudqKCwUYSmVf_FY7Dw3QNjF7fMNVzE_mrYHGi-5nnlPzBBAXsD-kUwl6AENBgGYkoBtc8ctHteocq0ioMYE6TuSkau4gqnz2bpVvV9ixCDWleqQzlRrc3O1RsrfoVgya508bMDcaLTKRGLZPfmlUITD6qjDK8fDnn-EpczppmxKTdgewjq74lKBnVKeyMEcEOnv8agWNgvAkcbaY3rZYqpjVET3ZY-x6S7N6SYF9FlW1TfcNoR87x0eTr_9YK1zmKqG5bycUB_G7ONpTg4P9BFG-NGlAsaNPL-6j15nhpkxx9evrwYG_abfJbEqOL9sWau5juYpzfwdEnhQZoTDpBm0Vyk4HWUlOZz2-7ZH6EROnVlMfM5skaC1OEjRaKZGCglO-I3FJ5KoTixWKbK3Z5yQrtz0DtvimLZZyomXXrrwipx6TgHlBGN0aj8rbZN87KpVcIVrIHaWyjEm3rd9pHWeoCCB_Hg0KVFeofVIFK0fu2u9OVlJrqN9F_uX2A7FnJjsqrbX9fuYLL1_HyhW96j1JWL_3qMW-yzWvuYb4Yiy2C0NSWQALILvuACvo9kCWG3aP_uu9zpmtq2f5GsdRIHNOL4-7pqbdrDUhZbLQYxaMRKgMvxjMMWiNMpUqzWutOvqDi8UjBUrKrBcCeCiWP8_AYeQEr2WxpHxKQl3rEsB35wE5FZQxF-kCHQRUL0Nf2uLdmiAlKIo-C0XsIK7r7tcHJODD4GXzXX-T9-0a1aBspHkWK3kTEiSDJ_NI-6gIxyr_UJ12F5S5C3OT1ESieMbM-rCyERPk9RIO88XkHLKHGAO-LlbEWetPv6aFL4x14=m15?authuser=0&cpn=ZRW_5dNWIs2aLLD0&c=WEB_EMBEDDED_PLAYER&cver=1.20251202.20.00" 
+     class="promo-fab" 
+     id="promo-btn"
+     target="_blank" 
+     title="Ver Promoción Navideña">
+      <i class="fas fa-bell"></i>
+      <span>PROMO</span>
+  </a>
+
+  <!-- WIDGET DE CHAT IA MODIFICADO -->
+  <button class="ai-fab" id="aiToggle" title="Asistente Virtual Estefanía">
+      <i class="fas fa-user-nurse"></i>
+      <span>Asistente Virtual Estefanía</span>
+  </button>
+  
+  <div class="chat-widget" id="chatWidget">
+      <div class="chat-header">
+          <h3><i class="fas fa-user-nurse"></i> Asistente Virtual Estefanía ✨</h3>
+          <button class="chat-close" id="chatClose">&times;</button>
+      </div>
+      <div class="chat-quick-actions">
+          <div class="quick-chip">¿Qué es una profilaxis?</div>
+          <div class="quick-chip">Tengo dolor de muela</div>
+          <div class="quick-chip">Horario de atención</div>
+      </div>
+      <div class="chat-messages" id="chatMessages">
+          <div class="message bot">
+              ¡Hola! Soy Estefanía, el asistente virtual de la Dra. Sandra. ¿En qué puedo ayudarte hoy con tu sonrisa?
+          </div>
+      </div>
+      <div class="typing-indicator" id="typingIndicator">Escribiendo...</div>
+      <div class="chat-input-area">
+          <input type="text" class="chat-input" id="chatInput" placeholder="Escribe tu pregunta..." />
+          <button class="chat-send-btn" id="chatSend"><i class="fas fa-paper-plane"></i></button>
+      </div>
+  </div>
+
+  <footer>
+    © 2025 Dra. Sandra Milena Torres G. | Consultorio Odontológico Integral | v3.0
+  </footer>
+
+  <!-- Cursor muelita custom usando FontAwesome -->
+  <div id="toothCursor" aria-hidden="true">
+    <i class="fas fa-tooth"></i>
+  </div>
+
+  <!-- FIREBASE INTEGRATION & TRACKING LOGIC -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { getFirestore, doc, getDoc, setDoc, updateDoc, increment, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+    const firebaseConfig = JSON.parse(__firebase_config);
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+    const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+
+    // Colección segura según reglas del sistema
+    // /artifacts/{appId}/public/data/analytics
+    const statsCollection = collection(db, 'artifacts', appId, 'public', 'data', 'analytics');
+    const statsDocRef = doc(statsCollection, 'general_stats');
+
+    // Inicializar y Rastreo
+    async function initTracking() {
+      // 1. Autenticar (Obligatorio antes de Firestore)
+      if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+          // Si hay token custom del entorno, usarlo (pero signInAnonymously es más robusto para este caso simple público)
+          // Fallback a anonymous por simplicidad si no es crítico.
+          await signInAnonymously(auth);
+      } else {
+          await signInAnonymously(auth);
+      }
+
+      const user = auth.currentUser;
+      if (!user) return; // Guard clause
+
+      // 2. Incrementar Visitas (Solo si no es admin mode para no ensuciar data)
+      const urlParams = new URLSearchParams(window.location.search);
+      if (!urlParams.has('admin')) {
+        try {
+          // Usar setDoc con merge para crear si no existe
+          await setDoc(statsDocRef, { 
+            visits: increment(1) 
+          }, { merge: true });
+        } catch (e) {
+          console.log("Error tracking visit", e);
+        }
+      }
+
+      // 3. Listener para clicks en Botones Clave
+      document.getElementById('whatsapp-btn').addEventListener('click', () => trackClick('whatsappClicks'));
+      document.getElementById('promo-btn').addEventListener('click', () => trackClick('promoClicks'));
+      
+      // También rastrear el link del menú si existe
+      const menuWa = document.getElementById('wa-menu-link');
+      if(menuWa) menuWa.addEventListener('click', () => trackClick('whatsappClicks'));
+    }
+
+    async function trackClick(field) {
+        if (!auth.currentUser) return;
+        try {
+            await updateDoc(statsDocRef, {
+                [field]: increment(1)
+            });
+        } catch (e) {
+            console.log("Error tracking click", e);
+        }
+    }
+
+    // --- LÓGICA DEL DASHBOARD ADMIN ---
+    async function initDashboard() {
+        const urlParams = new URLSearchParams(window.location.search);
+        // Verificar si la URL tiene ?admin=true
+        if (urlParams.has('admin')) {
+            const password = prompt("Ingrese contraseña de administrador:");
+            if (password === "admin123") { // Contraseña simple front-end
+                document.getElementById('admin-dashboard').style.display = 'block';
+                loadStats();
+            } else {
+                alert("Contraseña incorrecta.");
+            }
+        }
+
+        // Cerrar panel
+        document.getElementById('closeAdminBtn').addEventListener('click', () => {
+            document.getElementById('admin-dashboard').style.display = 'none';
+            // Limpiar URL
+            window.history.replaceState({}, document.title, "/");
+        });
+    }
+
+    function loadStats() {
+        // Escuchar cambios en tiempo real
+        onSnapshot(statsDocRef, (docSnap) => {
+            if (docSnap.exists()) {
+                const data = docSnap.data();
+                const visits = data.visits || 0;
+                const waClicks = data.whatsappClicks || 0;
+                const promoClicks = data.promoClicks || 0;
+
+                // Actualizar contadores
+                document.getElementById('visitCount').innerText = visits;
+                document.getElementById('whatsappCount').innerText = waClicks;
+                document.getElementById('promoCount').innerText = promoClicks;
+
+                // Actualizar Gráfica
+                renderChart(visits, waClicks, promoClicks);
+            } else {
+                // Si no existe el doc aún
+                document.getElementById('visitCount').innerText = 0;
+            }
+        }, (error) => {
+            console.error("Error fetching stats:", error);
+        });
+    }
+
+    let chartInstance = null;
+    function renderChart(visits, wa, promo) {
+        const ctx = document.getElementById('interactionsChart').getContext('2d');
+        
+        if (chartInstance) {
+            chartInstance.destroy();
+        }
+
+        chartInstance = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Visitas', 'WhatsApp Clics', 'Promo Clics'],
+                datasets: [{
+                    label: 'Interacciones Totales',
+                    data: [visits, wa, promo],
+                    backgroundColor: [
+                        'rgba(54, 162, 235, 0.6)', // Azul
+                        'rgba(75, 192, 192, 0.6)', // Verde
+                        'rgba(255, 99, 132, 0.6)'  // Rojo
+                    ],
+                    borderColor: [
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(255, 99, 132, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: { color: 'white' },
+                        grid: { color: 'rgba(255,255,255,0.1)' }
+                    },
+                    x: {
+                        ticks: { color: 'white' },
+                        grid: { display: false }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: { color: 'white' }
+                    }
+                }
+            }
+        });
+    }
+
+    // Iniciar todo
+    initTracking();
+    initDashboard();
+
+  </script>
+
+  <script>
+    (function(){
+      // Lógica del Modal
+      const modal=document.getElementById('modal');
+      const close=document.getElementById('closeModal');
+      const imgEl=document.getElementById('modalImg');
+      const caption=document.getElementById('modalCaption');
+      const prevBtn=document.getElementById('prevBtn');
+      const nextBtn=document.getElementById('nextBtn');
+
+      const gallery=[];
+      // Imagen del circulo flotante restaurada a placeholder visible
+      const circleImg={src:"https://placehold.co/600x600/17406c/ffffff?text=Folleto+Completo+Dra.+Sandra", title:"Folleto informativo"};
+      gallery.push(circleImg);
+      
+      // Imágenes del scroller
+      document.querySelectorAll('.media-scroller .card img').forEach(img=>{
+        gallery.push({src:img.getAttribute('src'), title:img.getAttribute('alt')||''});
+      });
+
+      let current=0;
+      function show(i){
+        if(gallery.length===0)return;
+        current=(i+gallery.length)%gallery.length;
+        imgEl.src=gallery[current].src;
+        caption.textContent=gallery[current].title||'';
+        modal.style.display='flex';
+      }
+
+      // IMPORTANTE: Ya no existe floatCircle en el HTML nuevo, así que verificamos antes de usar
+      const circle=document.getElementById('floatCircle');
+      if(circle){circle.addEventListener('click',()=>show(0));}
+      
+      const cards=document.querySelectorAll('.media-scroller .card img');
+      cards.forEach((img,idx)=>{
+        img.style.cursor='none'; // Mantener consistencia de cursor
+        img.addEventListener('click',()=>show(idx+1));
+      });
+
+      prevBtn.addEventListener('click',e=>{e.preventDefault();show(current-1);});
+      nextBtn.addEventListener('click',e=>{e.preventDefault();show(current+1);});
+
+      function closeModal(e){if(e){e.preventDefault();}modal.style.display='none';}
+      close.addEventListener('click',closeModal);
+      modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
+      
+      document.addEventListener('keydown',e=>{
+        if(modal.style.display==='flex'){
+          if(e.key==='Escape')closeModal();
+          if(e.key==='ArrowLeft')show(current-1);
+          if(e.key==='ArrowRight')show(current+1);
+        }
+      });
+    })();
+  </script>
+
+  <script>
+    (function(){
+      // Lógica del Cursor
+      const cursor = document.getElementById('toothCursor');
+      // Selectores que activan la animación del cursor - agregados los elementos del chat y whatsapp
+      const clickableSel = 'a, button, .menu-item, .card img, .float-circle, .nav, .ai-fab, .chat-close, .quick-chip, .chat-send-btn, .whatsapp-fab, .case-card';
+
+      // Mover el cursor
+      document.addEventListener('mousemove', (e)=>{
+        // Usamos translate3d para mejor performance
+        cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+      });
+
+      // Detectar Hover
+      document.addEventListener('mouseover', (e)=>{
+        if(e.target.closest(clickableSel)) {
+            cursor.classList.add('hover');
+        }
+      });
+      document.addEventListener('mouseout', (e)=>{
+        if(e.target.closest(clickableSel)) {
+            cursor.classList.remove('hover');
+        }
+      });
+
+      // Detectar Click
+      document.addEventListener('mousedown', ()=> cursor.classList.add('active'));
+      document.addEventListener('mouseup',   ()=> cursor.classList.remove('active'));
+    })();
+  </script>
+  
+  <script>
+      // LÓGICA DEL CHAT IA (Gemini API)
+      (function(){
+          const aiToggle = document.getElementById('aiToggle');
+          const chatWidget = document.getElementById('chatWidget');
+          const chatClose = document.getElementById('chatClose');
+          const chatMessages = document.getElementById('chatMessages');
+          const chatInput = document.getElementById('chatInput');
+          const chatSend = document.getElementById('chatSend');
+          const typingIndicator = document.getElementById('typingIndicator');
+          const chips = document.querySelectorAll('.quick-chip');
+          
+          // Toggle Chat
+          aiToggle.addEventListener('click', () => {
+              chatWidget.classList.add('active');
+              aiToggle.style.display = 'none';
+              // Foco en input
+              setTimeout(() => chatInput.focus(), 300);
+          });
+          
+          chatClose.addEventListener('click', () => {
+              chatWidget.classList.remove('active');
+              aiToggle.style.display = 'flex';
+          });
+          
+          // Quick Chips logic
+          chips.forEach(chip => {
+              chip.addEventListener('click', () => {
+                  chatInput.value = chip.innerText;
+                  sendMessage();
+              });
+          });
+          
+          // Send Message logic
+          chatSend.addEventListener('click', sendMessage);
+          chatInput.addEventListener('keypress', (e) => {
+              if(e.key === 'Enter') sendMessage();
+          });
+          
+          async function sendMessage() {
+              const text = chatInput.value.trim();
+              if(!text) return;
+              
+              // Add User Message
+              addMessage(text, 'user');
+              chatInput.value = '';
+              
+              // Show typing
+              typingIndicator.style.display = 'block';
+              chatMessages.scrollTop = chatMessages.scrollHeight;
+              
+              try {
+                  const response = await callGeminiAPI(text);
+                  typingIndicator.style.display = 'none';
+                  addMessage(response, 'bot');
+              } catch (error) {
+                  typingIndicator.style.display = 'none';
+                  // Mensaje amigable en el chat + detalle en consola
+                  addMessage("Lo siento, hubo un error de conexión: " + error.message, 'bot');
+                  console.error(error);
+              }
+          }
+          
+          function addMessage(text, sender) {
+              const div = document.createElement('div');
+              div.className = `message ${sender}`;
+              
+              // NUEVA LÓGICA: Detectar URLs crudas y convertirlas en enlaces clicables
+              // (Por si la IA olvida enviarlas como HTML)
+              let formattedText = text;
+              
+              // Regex simple para detectar URLs que empiezan con http/https y no están ya dentro de una etiqueta
+              const urlRegex = /(?<!href="|">)(https?:\/\/[^\s<]+)/g;
+              
+              // Solo aplicamos el auto-link si el texto no parece contener ya HTML complejo de la IA
+              if (!text.includes('<a href=')) {
+                  formattedText = text.replace(urlRegex, (url) => {
+                      return `<a href="${url}" target="_blank" style="color: #60a5fa; text-decoration: underline; word-break: break-all;">${url}</a>`;
+                  });
+              }
+
+              // Convertir saltos de línea a <br>
+              div.innerHTML = formattedText.replace(/\n/g, '<br>');
+              
+              chatMessages.appendChild(div);
+              chatMessages.scrollTop = chatMessages.scrollHeight;
+          }
+          
+          async function callGeminiAPI(userQuery) {
+              // -------------------------------------------------------------------------
+              // IMPORTANTE: Para que la IA funcione en tu página web publicada (Netlify),
+              // debes obtener una API KEY gratuita en: https://aistudio.google.com/app/apikey
+              // -------------------------------------------------------------------------
+              const apiKey = "AIzaSyBDM0d1kexedPFdnIng3DF9i5NecwEgH0Y"; // <--- ¡API KEY INTEGRADA!
+
+              // Lógica para detectar si hay Key o pedirla al usuario
+              let effectiveKey = apiKey;
+              if (!effectiveKey) {
+                  // Intentar leer de localStorage para no pedirla siempre
+                  effectiveKey = localStorage.getItem('gemini_api_key');
+              }
+              if (!effectiveKey) {
+                  // Pedir al usuario
+                  effectiveKey = prompt("Para usar el chat, por favor ingresa tu API Key de Google Gemini:");
+                  // Guardar para la próxima
+                  if (effectiveKey) localStorage.setItem('gemini_api_key', effectiveKey);
+              }
+
+              if (!effectiveKey) return "No se proporcionó API Key. El chat no puede funcionar sin ella.";
+              
+              // USAMOS EL MODELO 1.5 FLASH (MÁS RÁPIDO Y ESTABLE)
+              const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${effectiveKey}`;
+              
+              const systemPrompt = `
+              Eres Estefanía, el asistente virtual inteligente de la Dra. Sandra Milena Torres, una odontóloga profesional.
+              Tu tono es amable, empático, profesional y claro.
+
+              INFORMACIÓN DE CONTACTO Y UBICACIÓN:
+              - Dirección: Calle 10A #76-30, Kennedy, Bogotá, Colombia.
+              - Teléfono / WhatsApp: 320 4437948.
+              - Horarios: Lunes a Viernes 9:00 AM - 7:00 PM.
+
+              INSTRUCCIÓN IMPORTANTE SOBRE ENLACES:
+              Cuando proporciones enlaces de ubicación o contacto, DEBES usar formato HTML <a href="..."> para que el usuario pueda hacer clic.
+              Usa estos formatos EXACTOS:
+              
+              - Para Google Maps envía: <a href="https://maps.app.goo.gl/wCSBxh3XcK5WZLySA" target="_blank" style="color:#38bdf8; text-decoration:underline; font-weight:bold;">📍 Ver ubicación en Google Maps</a>
+              
+              - Para Waze envía: <a href="https://ul.waze.com/ul?ll=4.64269648%2C-74.13749099&navigate=yes&zoom=17&utm_campaign=default&utm_source=waze_website&utm_medium=lm_share_location" target="_blank" style="color:#38bdf8; text-decoration:underline; font-weight:bold;">🚗 Ir con Waze</a>
+              
+              - Para WhatsApp envía: <a href="https://wa.me/573204437948" target="_blank" style="color:#25D366; text-decoration:underline; font-weight:bold;">💬 Escribir al WhatsApp</a>
+
+              REDES SOCIALES (Usa también formato HTML):
+              - Facebook: <a href="https://www.facebook.com/dra.sandramilenatorresg" target="_blank" style="color:#38bdf8;">Facebook</a>
+              - Instagram: <a href="https://www.instagram.com/odontosmilesandra/" target="_blank" style="color:#38bdf8;">Instagram</a>
+
+              Responde preguntas sobre tratamientos y dudas generales.
+              
+              IMPORTANTE:
+              - NO des diagnósticos médicos definitivos.
+              - Si el usuario menciona dolor severo, sugiere contactar por WhatsApp.
+              - Sé conciso.
+              `;
+              
+              const payload = {
+                  contents: [{
+                      parts: [{ text: userQuery }]
+                  }],
+                  // Gemini 1.5 Flash soporta systemInstruction nativamente
+                  systemInstruction: {
+                      parts: [{ text: systemPrompt }]
+                  }
+              };
+              
+              const response = await fetch(url, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify(payload)
+              });
+              
+              if(!response.ok) {
+                  // Intentar leer el error detallado
+                  const errorData = await response.json().catch(() => ({}));
+                  console.error("Gemini API Error details:", errorData);
+                  throw new Error(`API Error ${response.status}: ${errorData.error?.message || response.statusText}`);
+              }
+              
+              const data = await response.json();
+              return data.candidates[0].content.parts[0].text;
+          }
+      })();
+  </script>
+
+  <!-- SCRIPT PARA LOGO AUTOMÁTICO NAVIDEÑO -->
+  <script>
+    (function() {
+        const logo = document.getElementById('main-logo');
+        const normalLogo = "https://lh3.googleusercontent.com/pw/AP1GczMEIXwxgR0KqY2ad1ITBNBk8n4BBp7fK1IKBs_RmId_MpeqLd8Uawk1ZdLJAienoX8C_M-QotVYBMKhPENKr19SK8oMG7qcuq3dS5-S59Qb07rlOzARLdP4V-b-g_KQov32VqmxRR5q5sO4vFFr0g0=w886-h430-s-no-gm?authuser=0";
+        const xmasLogo = "https://lh3.googleusercontent.com/pw/AP1GczNcDv_oOB-y3AfnEKBh-Vj6XACWq5IAkWKosXu305yGKbsHIeQiChqAu6VvJLt4elWGvS3vfUGr3uSmv9D_XUc2vWS-i7qxRnZv1tnSlT4FzH5SYyNCmMtb0dxJBr9AuRZ-gjmFJz8mqkLeEESfhDe3=w1270-h615-s-no-gm?authuser=0";
+        
+        const now = new Date();
+        const targetDate = new Date('2026-01-07T00:00:00'); // Fecha límite: 7 Enero 2026
+
+        if (now < targetDate) {
+            // Es Navidad
+            logo.src = xmasLogo;
+        } else {
+            // Ya pasó
+            logo.src = normalLogo;
+        }
+    })();
+  </script>
+  
+  <!-- Script de Nieve -->
+  <script>
+    (function() {
+        const snowContainer = document.body;
+        const maxSnowflakes = 50; // No saturar
+        
+        function createSnowflake() {
+            if (document.querySelectorAll('.snowflake').length >= maxSnowflakes) return;
+            
+            const flake = document.createElement('div');
+            flake.classList.add('snowflake');
+            flake.innerHTML = '❄'; // Carácter de nieve
+            
+            // Randomizar posición y animación
+            flake.style.left = Math.random() * 100 + 'vw';
+            flake.style.fontSize = (Math.random() * 10 + 10) + 'px'; // 10px a 20px
+            flake.style.animationDuration = (Math.random() * 3 + 2) + 's'; // 2s a 5s
+            flake.style.opacity = Math.random();
+            
+            snowContainer.appendChild(flake);
+            
+            // Eliminar al terminar animación para reciclar
+            setTimeout(() => {
+                flake.remove();
+            }, 5000); 
+        }
+
+        setInterval(createSnowflake, 200);
+    })();
+  </script>
+  
+  <!-- Script de Luces Navideñas -->
+  <script>
+    (function() {
+        const lightsContainer = document.createElement('ul');
+        lightsContainer.className = 'christmas-lights';
+        
+        // Crear bombillas
+        for (let i = 0; i < 40; i++) { // Cantidad de luces
+            const bulb = document.createElement('li');
+            bulb.className = 'light-bulb';
+            lightsContainer.appendChild(bulb);
+        }
+        
+        document.body.prepend(lightsContainer);
+    })();
+  </script>
+</body>
+</html>
