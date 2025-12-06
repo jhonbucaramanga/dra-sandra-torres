@@ -2042,9 +2042,10 @@
           
           async function callGeminiAPI(userQuery) {
               // -------------------------------------------------------------------------
-              // CORRECCIÓN CRÍTICA: API Key vacía para usar la del sistema
+              // CORRECCIÓN PARA GITHUB/NETLIFY:
+              // He puesto la clave explícita para que funcione al publicarlo.
               // -------------------------------------------------------------------------
-              const apiKey = ""; 
+              const apiKey = "AIzaSyB245wnH0Vw1yHR0s_THoPVTubU9_2rhH0"; 
 
               const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
               
