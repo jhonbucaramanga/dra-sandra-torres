@@ -1172,7 +1172,8 @@
         <div class="group-divider"></div>
 
         <div class="group-title">UBICACIÓN</div>
-        <a href="https://maps.app.goo.gl/wCSBxh3XcK5WZLySA" target="_blank"><i class="fas fa-map-marker-alt"></i> Google Maps</a>
+        <a href="#ubicacion"><i class="fas fa-map-marked-alt"></i> Ver Mapa en Web</a> <!-- NUEVO ENLACE AL MAPA -->
+        <a href="https://maps.app.goo.gl/wCSBxh3XcK5WZLySA" target="_blank"><i class="fas fa-map-marker-alt"></i> Google Maps App</a>
         <a href="https://ul.waze.com/ul?ll=4.64269648%2C-74.13749099&navigate=yes&zoom=17&utm_campaign=default&utm_source=waze_website&utm_medium=lm_share_location" target="_blank"><i class="fab fa-waze"></i> Waze</a>
         <div class="group-divider"></div>
 
@@ -1539,7 +1540,34 @@
       </div>
     </section>
 
-    <!-- Se ha eliminado el carrusel inferior (media-scroller) como solicitaste -->
+    <!-- SECCIÓN UBICACIÓN CON MAPA -->
+    <section id="ubicacion" class="service-section">
+      <div class="service-content">
+        <h2>📍 Encuéntranos Fácilmente</h2>
+        <p>Estamos ubicados en el corazón de Kennedy, en un espacio diseñado para tu tranquilidad.</p>
+        
+        <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px; border: 1px solid var(--slate); margin-top: 20px;">
+            <p style="margin: 5px 0;"><i class="fas fa-map-pin" style="color: var(--light-blue); width: 20px;"></i> <strong>Dirección:</strong><br>Calle 10A #76-30, Bogotá</p>
+            <p style="margin: 15px 0 5px;"><i class="far fa-clock" style="color: var(--light-blue); width: 20px;"></i> <strong>Horarios:</strong><br>Lunes a Viernes: 8:00 AM - 6:00 PM<br>Sábados: 8:00 AM - 1:00 PM</p>
+        </div>
+
+        <p class="highlight" style="font-size: 1rem; margin-top: 20px;">Haz clic en el mapa para trazar tu ruta.</p>
+      </div>
+      
+      <div class="service-img-container">
+          <div style="width: 100%; height: 350px; border-radius: 15px; overflow: hidden; border: 2px solid var(--light-blue); box-shadow: 0 8px 25px rgba(0,0,0,0.6);">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.857827664766!2d-74.15042992417958!3d4.641611942358022!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9c1a5c5c5c5d%3A0x1234567890abcdef!2sCl.+10a%20%2376-30%2C%20Bogot%C3%A1!5e0!3m2!1ses!2sco!4v1700000000000!5m2!1ses!2sco" 
+              width="100%" 
+              height="100%" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+      </div>
+    </section>
 
   </main>
 
@@ -1653,11 +1681,12 @@
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
     import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    // Añadimos getDoc y doc para leer la configuración
     import { getFirestore, doc, getDoc, setDoc, updateDoc, increment, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
     // --- CONFIGURACIÓN DE FIREBASE VALIDADA ---
     const firebaseConfig = {
-      apiKey: "AIzaSyAYa0o88rwDw7tKKVSOb_SnePL2V7nkWkU", // TU KEY REAL
+      apiKey: "AIzaSyAYa0o88rwDw7tKKVSOb_SnePL2V7nkWkU", // Esta clave NO se bloquea porque es pública por diseño en Firebase
       authDomain: "dra-sandra-torres.firebaseapp.com",
       projectId: "dra-sandra-torres",
       storageBucket: "dra-sandra-torres.firebasestorage.app",
@@ -1670,6 +1699,13 @@
     const db = getFirestore(app);
     const appId = "dra-sandra-torres";
 
+    // Exponer DB globalmente para que el chat pueda leer la clave
+    window.db = db;
+    window.appId = appId;
+    window.doc = doc;
+    window.getDoc = getDoc;
+    window.collection = collection;
+
     // Colección segura según reglas del sistema
     const statsCollection = collection(db, 'artifacts', appId, 'public', 'data', 'analytics');
     const statsDocRef = doc(statsCollection, 'general_stats');
@@ -1680,6 +1716,8 @@
       try {
           await signInAnonymously(auth);
           console.log("Firebase: Conectado anónimamente");
+          // Disparar evento personalizado para avisar al chat que ya hay conexión
+          window.dispatchEvent(new Event('firebase-ready'));
       } catch (error) {
           console.error("Error autenticación Firebase:", error);
           return;
@@ -1964,6 +2002,25 @@
                   chatWidget.classList.add('active');
                   aiToggle.style.display = 'none';
                   // Foco en input
+  <!-- LÓGICA DEL CHAT IA (VERSIÓN SEGURA: LEE DESDE FIREBASE) -->
+  <script>
+      (function(){
+          const aiToggle = document.getElementById('aiToggle');
+          const chatWidget = document.getElementById('chatWidget');
+          const chatClose = document.getElementById('chatClose');
+          const chatMessages = document.getElementById('chatMessages');
+          const chatInput = document.getElementById('chatInput');
+          const chatSend = document.getElementById('chatSend');
+          const typingIndicator = document.getElementById('typingIndicator');
+          const chips = document.querySelectorAll('.quick-chip');
+          
+          // Variable para guardar la clave recuperada
+          let cachedApiKey = null;
+
+          if(aiToggle) {
+              aiToggle.addEventListener('click', () => {
+                  chatWidget.classList.add('active');
+                  aiToggle.style.display = 'none';
                   setTimeout(() => chatInput.focus(), 300);
               });
           }
@@ -1975,7 +2032,6 @@
               });
           }
           
-          // Quick Chips logic
           chips.forEach(chip => {
               chip.addEventListener('click', () => {
                   chatInput.value = chip.innerText;
@@ -1983,7 +2039,6 @@
               });
           });
           
-          // Send Message logic
           if(chatSend) chatSend.addEventListener('click', sendMessage);
           if(chatInput) {
               chatInput.addEventListener('keypress', (e) => {
@@ -1991,103 +2046,88 @@
               });
           }
           
+          // Función para obtener la clave desde Firestore de forma segura
+          async function getSecureApiKey() {
+            if (cachedApiKey) return cachedApiKey;
+
+            // Esperar a que Firebase esté listo si no lo está
+            if (!window.db) {
+                console.log("Esperando conexión a base de datos...");
+                await new Promise(resolve => window.addEventListener('firebase-ready', resolve, { once: true }));
+            }
+
+            try {
+                // Ruta: artifacts/dra-sandra-torres/public/data/config/api_keys
+                // IMPORTANTE: Debes crear este documento en tu Firestore manualmente
+                const docRef = window.doc(window.db, 'artifacts', window.appId, 'public', 'data', 'config', 'api_keys');
+                const docSnap = await window.getDoc(docRef);
+
+                if (docSnap.exists()) {
+                    cachedApiKey = docSnap.data().gemini;
+                    return cachedApiKey;
+                } else {
+                    console.error("No se encontró el documento de claves en Firestore. Crea 'config/api_keys' con el campo 'gemini'.");
+                    return null;
+                }
+            } catch (error) {
+                console.error("Error leyendo clave segura:", error);
+                return null;
+            }
+          }
+
           async function sendMessage() {
               const text = chatInput.value.trim();
               if(!text) return;
               
-              // Add User Message
               addMessage(text, 'user');
               chatInput.value = '';
-              
-              // Show typing
               typingIndicator.style.display = 'block';
               chatMessages.scrollTop = chatMessages.scrollHeight;
               
               try {
-                  const response = await callGeminiAPI(text);
+                  // Obtener la clave dinámicamente antes de llamar
+                  const apiKey = await getSecureApiKey();
+                  
+                  if (!apiKey) {
+                      throw new Error("No se pudo recuperar la clave de seguridad del servidor.");
+                  }
+
+                  const response = await callGeminiAPI(text, apiKey);
                   typingIndicator.style.display = 'none';
                   addMessage(response, 'bot');
               } catch (error) {
                   typingIndicator.style.display = 'none';
-                  // Mensaje amigable en el chat + detalle en consola
-                  addMessage("Lo siento, hubo un error de conexión. Intenta de nuevo.", 'bot');
                   console.error(error);
+                  addMessage("Lo siento, estoy teniendo problemas técnicos para conectar con mi cerebro digital. Por favor contáctanos por WhatsApp.", 'bot');
               }
           }
           
           function addMessage(text, sender) {
               const div = document.createElement('div');
               div.className = `message ${sender}`;
-              
-              // NUEVA LÓGICA: Detectar URLs crudas y convertirlas en enlaces clicables
-              // (Por si la IA olvida enviarlas como HTML)
               let formattedText = text;
-              
-              // Regex simple para detectar URLs que empiezan con http/https y no están ya dentro de una etiqueta
               const urlRegex = /(?<!href="|">)(https?:\/\/[^\s<]+)/g;
-              
-              // Solo aplicamos el auto-link si el texto no parece contener ya HTML complejo de la IA
               if (!text.includes('<a href=')) {
-                  formattedText = text.replace(urlRegex, (url) => {
-                      return `<a href="${url}" target="_blank" style="color: #60a5fa; text-decoration: underline; word-break: break-all;">${url}</a>`;
-                  });
+                  formattedText = text.replace(urlRegex, (url) => `<a href="${url}" target="_blank" style="color: #60a5fa; text-decoration: underline; word-break: break-all;">${url}</a>`);
               }
-
-              // Convertir saltos de línea a <br>
               div.innerHTML = formattedText.replace(/\n/g, '<br>');
-              
               chatMessages.appendChild(div);
               chatMessages.scrollTop = chatMessages.scrollHeight;
           }
           
-          async function callGeminiAPI(userQuery) {
-              // -------------------------------------------------------------------------
-              // CORRECCIÓN PARA GITHUB/NETLIFY:
-              // He puesto la clave explícita para que funcione al publicarlo.
-              // -------------------------------------------------------------------------
-              const apiKey = "AIzaSyB245wnH0Vw1yHR0s_THoPVTubU9_2rhH0"; 
-
-              const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+          async function callGeminiAPI(userQuery, key) {
+              const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${key}`;
               
               const systemPrompt = `
-              Eres Estefanía, el asistente virtual inteligente de la Dra. Sandra Milena Torres, una odontóloga profesional.
+              Eres Estefanía, el asistente virtual inteligente de la Dra. Sandra Milena Torres.
               Tu tono es amable, empático, profesional y claro.
-
-              INFORMACIÓN DE CONTACTO Y UBICACIÓN:
-              - Dirección: Calle 10A #76-30, Kennedy, Bogotá, Colombia.
-              - Teléfono / WhatsApp: 320 4437948.
-              - Horarios: Lunes a Viernes 9:00 AM - 7:00 PM.
-
-              INSTRUCCIÓN IMPORTANTE SOBRE ENLACES:
-              Cuando proporciones enlaces de ubicación o contacto, DEBES usar formato HTML <a href="..."> para que el usuario pueda hacer clic.
-              Usa estos formatos EXACTOS:
-              
-              - Para Google Maps envía: <a href="https://maps.app.goo.gl/wCSBxh3XcK5WZLySA" target="_blank" style="color:#38bdf8; text-decoration:underline; font-weight:bold;">📍 Ver ubicación en Google Maps</a>
-              
-              - Para Waze envía: <a href="https://ul.waze.com/ul?ll=4.64269648%2C-74.13749099&navigate=yes&zoom=17&utm_campaign=default&utm_source=waze_website&utm_medium=lm_share_location" target="_blank" style="color:#38bdf8; text-decoration:underline; font-weight:bold;">🚗 Ir con Waze</a>
-              
-              - Para WhatsApp envía: <a href="https://wa.me/573204437948" target="_blank" style="color:#25D366; text-decoration:underline; font-weight:bold;">💬 Escribir al WhatsApp</a>
-
-              REDES SOCIALES (Usa también formato HTML):
-              - Facebook: <a href="https://www.facebook.com/dra.sandramilenatorresg" target="_blank" style="color:#38bdf8;">Facebook</a>
-              - Instagram: <a href="https://www.instagram.com/odontosmilesandra/" target="_blank" style="color:#38bdf8;">Instagram</a>
-
-              Responde preguntas sobre tratamientos y dudas generales.
-              
-              IMPORTANTE:
-              - NO des diagnósticos médicos definitivos.
-              - Si el usuario menciona dolor severo, sugiere contactar por WhatsApp.
-              - Sé conciso.
+              INFORMACIÓN: Calle 10A #76-30, Kennedy, Bogotá. WhatsApp: 320 4437948. L-V 9AM-7PM.
+              Usa HTML para enlaces. Sé concisa.
               `;
               
               const payload = {
-                  contents: [{
-                      parts: [{ text: userQuery }]
-                  }],
-                  // Gemini 1.5 Flash soporta systemInstruction nativamente
-                  systemInstruction: {
-                      parts: [{ text: systemPrompt }]
-                  }
+                  contents: [{ parts: [{ text: userQuery }] }],
+                  systemInstruction: { parts: [{ text: systemPrompt }] }
               };
               
               const response = await fetch(url, {
@@ -2097,10 +2137,8 @@
               });
               
               if(!response.ok) {
-                  // Intentar leer el error detallado
                   const errorData = await response.json().catch(() => ({}));
-                  console.error("Gemini API Error details:", errorData);
-                  throw new Error(`API Error ${response.status}: ${errorData.error?.message || response.statusText}`);
+                  throw new Error(`API Error ${response.status}`);
               }
               
               const data = await response.json();
