@@ -27,8 +27,10 @@
 
   <!-- Fuente Poppins -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <!-- FontAwesome para el cursor de muela y posibles iconos -->
+  
+  <!-- FontAwesome para el cursor de muela y posibles iconos (ESTA LÍNEA ES CRUCIAL PARA LOS ÍCONOS) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <!-- Chart.js para el Dashboard -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   
@@ -1119,53 +1121,6 @@
       cursor: pointer;
       font-weight: bold;
     }
-
-    /* Video Modal Styles */
-    #promoModal {
-        display: none;
-        position: fixed;
-        inset: 0;
-        background: rgba(0,0,0,0.9);
-        z-index: 2000;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    #promoModalContent {
-        background: #000;
-        border: 2px solid var(--christmas-gold);
-        border-radius: 10px;
-        width: 90%;
-        max-width: 800px;
-        height: auto;
-        position: relative;
-        padding: 0;
-        overflow: hidden;
-    }
-    
-    #promoModalContent iframe {
-        width: 100%;
-        aspect-ratio: 16/9;
-        border: none;
-        display: block;
-    }
-
-    .close-promo {
-        position: absolute;
-        top: -15px;
-        right: -15px;
-        background: var(--christmas-red);
-        color: white;
-        border-radius: 50%;
-        width: 30px;
-        height: 30px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        border: 2px solid white;
-        z-index: 2001;
-    }
   </style>
 </head>
 <body>
@@ -1281,7 +1236,6 @@
         <h2>¡Tu Salud es Nuestra Prioridad: Descubre el Poder de la Profilaxis!</h2>
         <p><strong>¿Sabías que la mejor medicina es la prevención?</strong></p>
         <p>La profilaxis es mucho más que una palabra técnica; es tu escudo protector contra enfermedades. Se trata de tomar medidas antes de que aparezcan los problemas, para mantenerte sano y disfrutar de la vida al máximo.</p>
-        <p>Ya sea una limpieza dental profesional para una sonrisa radiante o un chequeo médico preventivo, la profilaxis es la inversión más inteligente que puedes hacer en tu bienestar a largo plazo.</p>
         <p class="highlight" style="font-size: 1.15rem; margin-top: 10px;">¡No esperes a sentirte mal para cuidarte! Agenda tu cita de profilaxis hoy y toma el control de tu salud.</p>
       </div>
       <div class="service-img-container">
@@ -1649,30 +1603,14 @@
   </div>
 
   <!-- BOTÓN FLOTANTE PROMO NAVIDAD (Campana) -->
-  <button id="promo-btn"
+  <!-- Cambiado href a # para manejarlo con JS -->
+  <a href="#" 
      class="promo-fab" 
-     onclick="openPromoModal()"
+     id="promo-btn"
      title="Ver Promoción Navideña">
       <i class="fas fa-bell"></i>
       <span>PROMO</span>
-  </button>
-
-  <!-- MODAL PARA VIDEO PROMO -->
-  <div id="promoModal">
-      <div id="promoModalContent">
-          <button class="close-promo" onclick="closePromoModal()">&times;</button>
-          <!-- Iframe embebido para el player -->
-          <iframe 
-            src="https://lh3.googleusercontent.com/pw/AP1GczNq8f14TjpBBFflLMTftePpoeSvhY_zxb3gQPuB0KwlPgEHRfBLdIvp348vy3VyuoP0m6Wyc3ouZ2c34jX_U1EH3PfprUEVeugKEE1kxiHeK1TWyRrVIKUfFPs5eAELcaP1V5gfjRudqKCwUYSmVf_FY7Dw3QNjF7fMNVzE_mrYHGi-5nnlPzBBAXsD-kUwl6AENBgGYkoBtc8ctHteocq0ioMYE6TuSkau4gqnz2bpVvV9ixCDWleqQzlRrc3O1RsrfoVgya508bMDcaLTKRGLZPfmlUITD6qjDK8fDnn-EpczppmxKTdgewjq74lKBnVKeyMEcEOnv8agWNgvAkcbaY3rZYqpjVET3ZY-x6S7N6SYF9FlW1TfcNoR87x0eTr_9YK1zmKqG5bycUB_G7ONpTg4P9BFG-NGlAsaNPL-6j15nhpkxx9evrwYG_abfJbEqOL9sWau5juYpzfwdEnhQZoTDpBm0Vyk4HWUlOZz2-7ZH6EROnVlMfM5skaC1OEjRaKZGCglO-I3FJ5KoTixWKbK3Z5yQrtz0DtvimLZZyomXXrrwipx6TgHlBGN0aj8rbZN87KpVcIVrIHaWyjEm3rd9pHWeoCCB_Hg0KVFeofVIFK0fu2u9OVlJrqN9F_uX2A7FnJjsqrbX9fuYLL1_HyhW96j1JWL_3qMW-yzWvuYb4Yiy2C0NSWQALILvuACvo9kCWG3aP_uu9zpmtq2f5GsdRIHNOL4-7pqbdrDUhZbLQYxaMRKgMvxjMMWiNMpUqzWutOvqDi8UjBUrKrBcCeCiWP8_AYeQEr2WxpHxKQl3rEsB35wE5FZQxF-kCHQRUL0Nf2uLdmiAlKIo-C0XsIK7r7tcHJODD4GXzXX-T9-0a1aBspHkWK3kTEiSDJ_NI-6gIxyr_UJ12F5S5C3OT1ESieMbM-rCyERPk9RIO88XkHLKHGAO-LlbEWetPv6aFL4x14=m15?authuser=0&cpn=ZRW_5dNWIs2aLLD0&c=WEB_EMBEDDED_PLAYER&cver=1.20251202.20.00" 
-            allow="autoplay; encrypted-media" 
-            allowfullscreen>
-          </iframe>
-          <div style="text-align: center; padding: 10px; color: white;">
-              <p>¿No carga el video?</p>
-              <a href="https://lh3.googleusercontent.com/pw/AP1GczNq8f14TjpBBFflLMTftePpoeSvhY_zxb3gQPuB0KwlPgEHRfBLdIvp348vy3VyuoP0m6Wyc3ouZ2c34jX_U1EH3PfprUEVeugKEE1kxiHeK1TWyRrVIKUfFPs5eAELcaP1V5gfjRudqKCwUYSmVf_FY7Dw3QNjF7fMNVzE_mrYHGi-5nnlPzBBAXsD-kUwl6AENBgGYkoBtc8ctHteocq0ioMYE6TuSkau4gqnz2bpVvV9ixCDWleqQzlRrc3O1RsrfoVgya508bMDcaLTKRGLZPfmlUITD6qjDK8fDnn-EpczppmxKTdgewjq74lKBnVKeyMEcEOnv8agWNgvAkcbaY3rZYqpjVET3ZY-x6S7N6SYF9FlW1TfcNoR87x0eTr_9YK1zmKqG5bycUB_G7ONpTg4P9BFG-NGlAsaNPL-6j15nhpkxx9evrwYG_abfJbEqOL9sWau5juYpzfwdEnhQZoTDpBm0Vyk4HWUlOZz2-7ZH6EROnVlMfM5skaC1OEjRaKZGCglO-I3FJ5KoTixWKbK3Z5yQrtz0DtvimLZZyomXXrrwipx6TgHlBGN0aj8rbZN87KpVcIVrIHaWyjEm3rd9pHWeoCCB_Hg0KVFeofVIFK0fu2u9OVlJrqN9F_uX2A7FnJjsqrbX9fuYLL1_HyhW96j1JWL_3qMW-yzWvuYb4Yiy2C0NSWQALILvuACvo9kCWG3aP_uu9zpmtq2f5GsdRIHNOL4-7pqbdrDUhZbLQYxaMRKgMvxjMMWiNMpUqzWutOvqDi8UjBUrKrBcCeCiWP8_AYeQEr2WxpHxKQl3rEsB35wE5FZQxF-kCHQRUL0Nf2uLdmiAlKIo-C0XsIK7r7tcHJODD4GXzXX-T9-0a1aBspHkWK3kTEiSDJ_NI-6gIxyr_UJ12F5S5C3OT1ESieMbM-rCyERPk9RIO88XkHLKHGAO-LlbEWetPv6aFL4x14=m15?authuser=0&cpn=ZRW_5dNWIs2aLLD0&c=WEB_EMBEDDED_PLAYER&cver=1.20251202.20.00" target="_blank" class="btn">Ver Original</a>
-          </div>
-      </div>
-  </div>
+  </a>
 
   <!-- WIDGET DE CHAT IA MODIFICADO -->
   <button class="ai-fab" id="aiToggle" title="Asistente Virtual Estefanía">
@@ -1711,32 +1649,40 @@
     <i class="fas fa-tooth"></i>
   </div>
 
-  <!-- FIREBASE INTEGRATION & TRACKING LOGIC -->
+  <!-- FIREBASE INTEGRATION & TRACKING LOGIC (CONFIGURACIÓN REAL Y VALIDADA) -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
     import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
     import { getFirestore, doc, getDoc, setDoc, updateDoc, increment, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-    const firebaseConfig = JSON.parse(__firebase_config);
+    // --- CONFIGURACIÓN DE FIREBASE VALIDADA ---
+    const firebaseConfig = {
+      apiKey: "AIzaSyAYa0o88rwDw7tKKVSOb_SnePL2V7nkWkU", // TU KEY REAL
+      authDomain: "dra-sandra-torres.firebaseapp.com",
+      projectId: "dra-sandra-torres",
+      storageBucket: "dra-sandra-torres.firebasestorage.app",
+      messagingSenderId: "361954775188",
+      appId: "1:361954775188:web:00000000000000"
+    };
+
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const db = getFirestore(app);
-    const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+    const appId = "dra-sandra-torres";
 
     // Colección segura según reglas del sistema
-    // /artifacts/{appId}/public/data/analytics
     const statsCollection = collection(db, 'artifacts', appId, 'public', 'data', 'analytics');
     const statsDocRef = doc(statsCollection, 'general_stats');
 
     // Inicializar y Rastreo
     async function initTracking() {
-      // 1. Autenticar (Obligatorio antes de Firestore)
-      if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-          // Si hay token custom del entorno, usarlo (pero signInAnonymously es más robusto para este caso simple público)
-          // Fallback a anonymous por simplicidad si no es crítico.
+      // 1. Autenticar anónimamente (OBLIGATORIO)
+      try {
           await signInAnonymously(auth);
-      } else {
-          await signInAnonymously(auth);
+          console.log("Firebase: Conectado anónimamente");
+      } catch (error) {
+          console.error("Error autenticación Firebase:", error);
+          return;
       }
 
       const user = auth.currentUser;
@@ -1756,8 +1702,11 @@
       }
 
       // 3. Listener para clicks en Botones Clave
-      document.getElementById('whatsapp-btn').addEventListener('click', () => trackClick('whatsappClicks'));
-      document.getElementById('promo-btn').addEventListener('click', () => trackClick('promoClicks'));
+      const waBtn = document.getElementById('whatsapp-btn');
+      if(waBtn) waBtn.addEventListener('click', () => trackClick('whatsappClicks'));
+      
+      const promoBtn = document.getElementById('promo-btn');
+      if(promoBtn) promoBtn.addEventListener('click', () => trackClick('promoClicks'));
       
       // También rastrear el link del menú si existe
       const menuWa = document.getElementById('wa-menu-link');
@@ -1790,11 +1739,14 @@
         }
 
         // Cerrar panel
-        document.getElementById('closeAdminBtn').addEventListener('click', () => {
-            document.getElementById('admin-dashboard').style.display = 'none';
-            // Limpiar URL
-            window.history.replaceState({}, document.title, "/");
-        });
+        const closeBtn = document.getElementById('closeAdminBtn');
+        if(closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                document.getElementById('admin-dashboard').style.display = 'none';
+                // Limpiar URL
+                window.history.replaceState({}, document.title, "/");
+            });
+        }
     }
 
     function loadStats() {
@@ -1807,15 +1759,21 @@
                 const promoClicks = data.promoClicks || 0;
 
                 // Actualizar contadores
-                document.getElementById('visitCount').innerText = visits;
-                document.getElementById('whatsappCount').innerText = waClicks;
-                document.getElementById('promoCount').innerText = promoClicks;
+                const visitEl = document.getElementById('visitCount');
+                if(visitEl) visitEl.innerText = visits;
+                
+                const waEl = document.getElementById('whatsappCount');
+                if(waEl) waEl.innerText = waClicks;
+                
+                const promoEl = document.getElementById('promoCount');
+                if(promoEl) promoEl.innerText = promoClicks;
 
                 // Actualizar Gráfica
                 renderChart(visits, waClicks, promoClicks);
             } else {
                 // Si no existe el doc aún
-                document.getElementById('visitCount').innerText = 0;
+                const visitEl = document.getElementById('visitCount');
+                if(visitEl) visitEl.innerText = 0;
             }
         }, (error) => {
             console.error("Error fetching stats:", error);
@@ -1824,7 +1782,10 @@
 
     let chartInstance = null;
     function renderChart(visits, wa, promo) {
-        const ctx = document.getElementById('interactionsChart').getContext('2d');
+        const ctxEl = document.getElementById('interactionsChart');
+        if(!ctxEl) return;
+        
+        const ctx = ctxEl.getContext('2d');
         
         if (chartInstance) {
             chartInstance.destroy();
@@ -1894,7 +1855,7 @@
       gallery.push(circleImg);
       
       // Imágenes del scroller
-      document.querySelectorAll('.media-scroller .card img').forEach(img=>{
+      document.querySelectorAll('.before-after-scroller .case-card img').forEach(img=>{
         gallery.push({src:img.getAttribute('src'), title:img.getAttribute('alt')||''});
       });
 
@@ -1911,26 +1872,46 @@
       const circle=document.getElementById('floatCircle');
       if(circle){circle.addEventListener('click',()=>show(0));}
       
-      const cards=document.querySelectorAll('.media-scroller .card img');
+      const cards=document.querySelectorAll('.before-after-scroller .case-card img');
       cards.forEach((img,idx)=>{
         img.style.cursor='none'; // Mantener consistencia de cursor
         img.addEventListener('click',()=>show(idx+1));
       });
 
-      prevBtn.addEventListener('click',e=>{e.preventDefault();show(current-1);});
-      nextBtn.addEventListener('click',e=>{e.preventDefault();show(current+1);});
+      if(prevBtn) prevBtn.addEventListener('click',e=>{e.preventDefault();show(current-1);});
+      if(nextBtn) nextBtn.addEventListener('click',e=>{e.preventDefault();show(current+1);});
 
       function closeModal(e){if(e){e.preventDefault();}modal.style.display='none';}
-      close.addEventListener('click',closeModal);
-      modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
+      if(close) close.addEventListener('click',closeModal);
+      if(modal) modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
       
       document.addEventListener('keydown',e=>{
-        if(modal.style.display==='flex'){
+        if(modal && modal.style.display==='flex'){
           if(e.key==='Escape')closeModal();
           if(e.key==='ArrowLeft')show(current-1);
           if(e.key==='ArrowRight')show(current+1);
         }
       });
+
+      // --- CORRECCIÓN FLYER ---
+      // Manejar el clic en la campana para abrir el modal con la imagen
+      const promoBtn = document.getElementById('promo-btn');
+      if(promoBtn) {
+        promoBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            // URL DEL FLYER
+            // PARA GITHUB: Sube tu imagen y pon aquí "./promo-navidad.jpg"
+            const flyerUrl = "./promo-navidad.jpg";
+            
+            imgEl.src = flyerUrl;
+            // Fallback robusto por si el link caducó
+            imgEl.onerror = function() {
+                this.src = 'https://placehold.co/600x800/dc2626/ffffff?text=Promo+Navidad+2025\n(Imagen+No+Disponible)';
+            };
+            caption.textContent = "🎄 Promoción Especial de Navidad 🎄";
+            modal.style.display = 'flex';
+        });
+      }
     })();
   </script>
 
@@ -1939,34 +1920,34 @@
       // Lógica del Cursor
       const cursor = document.getElementById('toothCursor');
       // Selectores que activan la animación del cursor - agregados los elementos del chat y whatsapp
-      const clickableSel = 'a, button, .menu-item, .card img, .float-circle, .nav, .ai-fab, .chat-close, .quick-chip, .chat-send-btn, .whatsapp-fab, .case-card';
+      const clickableSel = 'a, button, .menu-item, .card img, .float-circle, .nav, .ai-fab, .chat-close, .quick-chip, .chat-send-btn, .whatsapp-fab, .case-card, .promo-fab';
 
       // Mover el cursor
       document.addEventListener('mousemove', (e)=>{
         // Usamos translate3d para mejor performance
-        cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+        if(cursor) cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
       });
 
       // Detectar Hover
       document.addEventListener('mouseover', (e)=>{
-        if(e.target.closest(clickableSel)) {
+        if(cursor && e.target.closest(clickableSel)) {
             cursor.classList.add('hover');
         }
       });
       document.addEventListener('mouseout', (e)=>{
-        if(e.target.closest(clickableSel)) {
+        if(cursor && e.target.closest(clickableSel)) {
             cursor.classList.remove('hover');
         }
       });
 
       // Detectar Click
-      document.addEventListener('mousedown', ()=> cursor.classList.add('active'));
-      document.addEventListener('mouseup',   ()=> cursor.classList.remove('active'));
+      document.addEventListener('mousedown', ()=> { if(cursor) cursor.classList.add('active'); });
+      document.addEventListener('mouseup',   ()=> { if(cursor) cursor.classList.remove('active'); });
     })();
   </script>
   
   <script>
-      // LÓGICA DEL CHAT IA (Gemini API)
+      // LÓGICA DEL CHAT IA (Gemini API - CORREGIDA)
       (function(){
           const aiToggle = document.getElementById('aiToggle');
           const chatWidget = document.getElementById('chatWidget');
@@ -1977,18 +1958,22 @@
           const typingIndicator = document.getElementById('typingIndicator');
           const chips = document.querySelectorAll('.quick-chip');
           
-          // Toggle Chat
-          aiToggle.addEventListener('click', () => {
-              chatWidget.classList.add('active');
-              aiToggle.style.display = 'none';
-              // Foco en input
-              setTimeout(() => chatInput.focus(), 300);
-          });
+          if(aiToggle) {
+              // Toggle Chat
+              aiToggle.addEventListener('click', () => {
+                  chatWidget.classList.add('active');
+                  aiToggle.style.display = 'none';
+                  // Foco en input
+                  setTimeout(() => chatInput.focus(), 300);
+              });
+          }
           
-          chatClose.addEventListener('click', () => {
-              chatWidget.classList.remove('active');
-              aiToggle.style.display = 'flex';
-          });
+          if(chatClose) {
+              chatClose.addEventListener('click', () => {
+                  chatWidget.classList.remove('active');
+                  aiToggle.style.display = 'flex';
+              });
+          }
           
           // Quick Chips logic
           chips.forEach(chip => {
@@ -1999,10 +1984,12 @@
           });
           
           // Send Message logic
-          chatSend.addEventListener('click', sendMessage);
-          chatInput.addEventListener('keypress', (e) => {
-              if(e.key === 'Enter') sendMessage();
-          });
+          if(chatSend) chatSend.addEventListener('click', sendMessage);
+          if(chatInput) {
+              chatInput.addEventListener('keypress', (e) => {
+                  if(e.key === 'Enter') sendMessage();
+              });
+          }
           
           async function sendMessage() {
               const text = chatInput.value.trim();
@@ -2023,7 +2010,7 @@
               } catch (error) {
                   typingIndicator.style.display = 'none';
                   // Mensaje amigable en el chat + detalle en consola
-                  addMessage("Lo siento, hubo un error de conexión: " + error.message, 'bot');
+                  addMessage("Lo siento, hubo un error de conexión. Intenta de nuevo.", 'bot');
                   console.error(error);
               }
           }
@@ -2055,28 +2042,11 @@
           
           async function callGeminiAPI(userQuery) {
               // -------------------------------------------------------------------------
-              // IMPORTANTE: Para que la IA funcione en tu página web publicada (Netlify),
-              // debes obtener una API KEY gratuita en: https://aistudio.google.com/app/apikey
+              // CORRECCIÓN CRÍTICA: API Key vacía para usar la del sistema
               // -------------------------------------------------------------------------
-              const apiKey = "AIzaSyBDM0d1kexedPFdnIng3DF9i5NecwEgH0Y"; // <--- ¡API KEY INTEGRADA!
+              const apiKey = ""; 
 
-              // Lógica para detectar si hay Key o pedirla al usuario
-              let effectiveKey = apiKey;
-              if (!effectiveKey) {
-                  // Intentar leer de localStorage para no pedirla siempre
-                  effectiveKey = localStorage.getItem('gemini_api_key');
-              }
-              if (!effectiveKey) {
-                  // Pedir al usuario
-                  effectiveKey = prompt("Para usar el chat, por favor ingresa tu API Key de Google Gemini:");
-                  // Guardar para la próxima
-                  if (effectiveKey) localStorage.setItem('gemini_api_key', effectiveKey);
-              }
-
-              if (!effectiveKey) return "No se proporcionó API Key. El chat no puede funcionar sin ella.";
-              
-              // USAMOS EL MODELO 1.5 FLASH (MÁS RÁPIDO Y ESTABLE)
-              const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${effectiveKey}`;
+              const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
               
               const systemPrompt = `
               Eres Estefanía, el asistente virtual inteligente de la Dra. Sandra Milena Torres, una odontóloga profesional.
@@ -2148,10 +2118,10 @@
         const now = new Date();
         const targetDate = new Date('2026-01-07T00:00:00'); // Fecha límite: 7 Enero 2026
 
-        if (now < targetDate) {
+        if (now < targetDate && logo) {
             // Es Navidad
             logo.src = xmasLogo;
-        } else {
+        } else if (logo) {
             // Ya pasó
             logo.src = normalLogo;
         }
@@ -2204,32 +2174,6 @@
         
         document.body.prepend(lightsContainer);
     })();
-  </script>
-
-  <!-- Script del Modal de Video Promo -->
-  <script>
-      function openPromoModal() {
-          const modal = document.getElementById('promoModal');
-          modal.style.display = 'flex';
-      }
-
-      function closePromoModal() {
-          const modal = document.getElementById('promoModal');
-          modal.style.display = 'none';
-          // Opcional: Detener video al cerrar si fuera un iframe de YT
-          const iframe = modal.querySelector('iframe');
-          if (iframe) {
-              const src = iframe.src;
-              iframe.src = src; // Reload to stop
-          }
-      }
-
-      // Cerrar al hacer clic fuera del contenido
-      document.getElementById('promoModal').addEventListener('click', function(e) {
-          if (e.target === this) {
-              closePromoModal();
-          }
-      });
   </script>
 </body>
 </html>
